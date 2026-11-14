@@ -119,7 +119,7 @@ Rule of thumb: one idea per scene, one big number or word on screen, everything 
 - **On screen:** Two cards, left then right:
   - `NOW` · **Ctruh Technologies** · Associate Product Manager · **0 critical bugs**
   - `FACULTY` · **Desportz** · Esports Marketing & Business Development
-- **Visual:** Cards sit on the grid paper. The Ctruh card has a small green-free status line: `MARKETPLACE: SHIPPED` with an orange tick.
+- **Visual:** Cards sit on the grid paper. The Ctruh card has a status line: `MARKETPLACE: SHIPPED` with an orange tick.
 - **Animation:** Ctruh card slides in from the left (0:38), the orange tick draws itself and "0" pulses once. Desportz card slides in from the right at 0:42. Both hold, slightly floating (2 px, slow sine).
 - **Sound:** Two soft "whoosh + tick" pairs.
 - **Note:** Say the Desportz dates only on the website, not in the video.
@@ -215,7 +215,7 @@ Engineer by training. Operator by habit.
 Got a zero-to-one problem? Let's build it.
 
 13
-00:00:56,000 --> 01:00,000
+00:00:56,000 --> 00:01:00,000
 Kshitiz Trigunayat. Say hello.
 ```
 
