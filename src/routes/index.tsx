@@ -107,7 +107,14 @@ function HeroVideo({ className = "" }: { className?: string }) {
       <div className="group relative aspect-video w-full overflow-hidden border border-border bg-surface transition-colors duration-300 hover:border-accent">
         {src ? (
           isFile ? (
-            <video src={src} controls playsInline preload="metadata" className="h-full w-full object-cover" />
+            <video
+              src={src}
+              poster="/intro-poster.jpg"
+              controls
+              playsInline
+              preload="metadata"
+              className="h-full w-full object-cover"
+            />
           ) : (
             <iframe
               src={src}

@@ -13,7 +13,7 @@ export const SITE = {
     /** Drop the current PDF at public/resume.pdf. */
     resume: "/resume.pdf",
     /** Intro motion-graphics video. Paste an embed URL (YouTube/Vimeo) or "/intro.mp4" to replace the hero placeholder. */
-    introVideo: "",
+    introVideo: "/intro.mp4",
   },
 } as const;
 
