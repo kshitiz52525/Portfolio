@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useRef } from "react";
-import { ArrowDownRight, ArrowRight, ArrowUpRight, FileText } from "lucide-react";
+import { ArrowDownRight, ArrowRight, ArrowUpRight, FileText, Play } from "lucide-react";
 import { dncActivations, projects, type Project } from "@/lib/projects";
 import { timelineChapters } from "@/lib/timeline-data";
 import { blogPosts } from "@/lib/blog-posts";
@@ -98,6 +98,47 @@ function Portfolio() {
   );
 }
 
+/* ---------------- Intro video (placeholder until the video is ready) ---------------- */
+function HeroVideo({ className = "" }: { className?: string }) {
+  const src: string = SITE.links.introVideo;
+  const isFile = /\.(mp4|webm)$/i.test(src);
+  return (
+    <div className={className}>
+      <div className="group relative aspect-video w-full overflow-hidden border border-border bg-surface transition-colors duration-300 hover:border-accent">
+        {src ? (
+          isFile ? (
+            <video src={src} controls playsInline preload="metadata" className="h-full w-full object-cover" />
+          ) : (
+            <iframe
+              src={src}
+              title="Intro video: who is Kshitiz Trigunayat"
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowFullScreen
+              className="h-full w-full"
+            />
+          )
+        ) : (
+          <>
+            <div aria-hidden className="hatch absolute inset-0" />
+            <span aria-hidden className="absolute left-2 top-2 h-3 w-3 border-l-2 border-t-2 border-accent" />
+            <span aria-hidden className="absolute right-2 top-2 h-3 w-3 border-r-2 border-t-2 border-accent" />
+            <span aria-hidden className="absolute bottom-2 left-2 h-3 w-3 border-b-2 border-l-2 border-accent" />
+            <span aria-hidden className="absolute bottom-2 right-2 h-3 w-3 border-b-2 border-r-2 border-accent" />
+            <div className="absolute inset-0 grid place-items-center">
+              <span className="relative grid h-14 w-14 place-items-center rounded-full bg-accent text-on-accent transition-transform duration-300 group-hover:scale-110">
+                <span aria-hidden className="absolute inset-0 animate-ping rounded-full bg-accent/40" />
+                <Play size={20} className="relative translate-x-0.5" fill="currentColor" />
+              </span>
+            </div>
+            <p className="absolute bottom-3 left-4 font-mono-label text-primary">Meet me in 60 sec</p>
+            <p className="absolute bottom-3 right-4 font-mono-label text-secondary">Video coming soon</p>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
 /* ---------------- Hero ---------------- */
 function Hero() {
   const gridRef = useRef<HTMLDivElement>(null);
@@ -142,6 +183,8 @@ function Hero() {
           </p>
         </div>
 
+        <HeroVideo className="reveal absolute right-4 top-14 hidden w-[24vw] max-w-[340px] md:right-8 md:block" />
+
         <h1
           ref={titleRef}
           className="font-display font-semibold mt-10 md:mt-14 reveal will-change-transform"
@@ -151,6 +194,8 @@ function Hero() {
           <br />
           Trigunayat<span className="text-accent">.</span>
         </h1>
+
+        <HeroVideo className="reveal mt-8 md:hidden" />
 
         <div className="mt-10 md:mt-14 grid gap-10 md:grid-cols-12 md:items-end">
           <p

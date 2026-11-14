@@ -12,6 +12,8 @@ export const SITE = {
     medium: "https://medium.com/@kshitiz52.525",
     /** Drop the current PDF at public/resume.pdf. */
     resume: "/resume.pdf",
+    /** Intro motion-graphics video. Paste an embed URL (YouTube/Vimeo) or "/intro.mp4" to replace the hero placeholder. */
+    introVideo: "",
   },
 } as const;
 
