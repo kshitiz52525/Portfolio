@@ -190,7 +190,7 @@ function Hero() {
           </p>
         </div>
 
-        <HeroVideo className="reveal absolute right-4 top-14 hidden w-[24vw] max-w-[340px] md:right-8 md:block" />
+        <HeroVideo className="reveal absolute right-4 top-14 z-20 hidden w-[24vw] max-w-[340px] md:right-8 md:block" />
 
         <h1
           ref={titleRef}
@@ -202,7 +202,7 @@ function Hero() {
           Trigunayat<span className="text-accent">.</span>
         </h1>
 
-        <HeroVideo className="reveal mt-8 md:hidden" />
+        <HeroVideo className="reveal relative z-20 mt-8 md:hidden" />
 
         <div className="mt-10 md:mt-14 grid gap-10 md:grid-cols-12 md:items-end">
           <p
