@@ -316,13 +316,30 @@ function WorkEntry({
         <div className="border border-border bg-surface transition-all duration-500 group-hover/entry:border-accent group-hover/entry:-translate-y-1">
           <p className="font-mono-label text-secondary px-5 pt-4">Scorecard</p>
           <dl className="mt-2">
-            {outcomes.map((o) => (
-              <div key={o.label} className="flex items-baseline justify-between gap-4 border-t border-border px-5 py-4">
-                <dt className="text-sm text-secondary leading-snug">{o.label}</dt>
-                <dd className="font-display text-2xl font-semibold text-right shrink-0"><CountUp value={o.value} />
-                </dd>
-              </div>
-            ))}
+            {outcomes.map((o) =>
+              o.value.includes(" · ") ? (
+                <div key={o.label} className="border-t border-border px-5 py-4">
+                  <dt className="text-sm text-secondary leading-snug">{o.label}</dt>
+                  <dd className="mt-3 flex flex-wrap gap-2">
+                    {o.value.split(" · ").map((v) => (
+                      <span
+                        key={v}
+                        className="border border-border px-2.5 py-1 font-display text-sm font-semibold transition-colors hover:border-accent hover:text-accent"
+                      >
+                        {v}
+                      </span>
+                    ))}
+                  </dd>
+                </div>
+              ) : (
+                <div key={o.label} className="flex items-baseline justify-between gap-4 border-t border-border px-5 py-4">
+                  <dt className="text-sm text-secondary leading-snug">{o.label}</dt>
+                  <dd className="font-display text-2xl font-semibold text-right shrink-0">
+                    <CountUp value={o.value} />
+                  </dd>
+                </div>
+              ),
+            )}
           </dl>
         </div>
       </aside>

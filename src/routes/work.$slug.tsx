@@ -134,9 +134,19 @@ function CaseStudy() {
             <dl className="grid gap-8 md:grid-cols-3">
               {cs.outcomes.map((o) => (
                 <div key={o.label} className="border-t border-border pt-5">
-                  <dd className="font-display font-semibold leading-none" style={{ fontSize: "clamp(44px, 6vw, 80px)" }}>
-                    {o.value}
-                  </dd>
+                  {o.value.includes(" · ") ? (
+                    <dd className="flex flex-wrap gap-2">
+                      {o.value.split(" · ").map((v) => (
+                        <span key={v} className="border border-border px-3 py-1.5 font-display text-lg font-semibold">
+                          {v}
+                        </span>
+                      ))}
+                    </dd>
+                  ) : (
+                    <dd className="font-display font-semibold leading-none" style={{ fontSize: "clamp(44px, 6vw, 80px)" }}>
+                      {o.value}
+                    </dd>
+                  )}
                   <dt className="mt-3 text-sm text-secondary">{o.label}</dt>
                 </div>
               ))}
