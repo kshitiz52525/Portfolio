@@ -1,6 +1,6 @@
-# Intro video plan — "Meet Kshitiz in 60 seconds"
+# Intro video plan — "Meet Kshitiz"
 
-Goal: someone who has never heard of you watches 60 seconds, with sound off or on, and knows who you are, what you have done, and how to reach you.
+Goal: someone who has never heard of you watches about 75 seconds, with sound off or on, and knows who you are, what you have done, and how to reach you.
 Format: motion graphics (type, numbers, logos, UI clips). No talking head needed. Facts come from the portfolio, so the video and the site never disagree.
 
 ---
@@ -18,43 +18,18 @@ The video follows the same arc: hook, proof, credibility, one clear ask.
 
 ---
 
-## 2. Main script: 60 seconds (about 145 words, 150 wpm)
+## 2. Main script and storyboard
 
-Voiceover in first person. On-screen text carries the story if sound is off.
+The full shot-by-shot script (15 scenes, about 76 seconds) lives in **[INTRO_VIDEO_SCRIPT.md](INTRO_VIDEO_SCRIPT.md)**. It includes the exact voiceover, on-screen text, animation timings, sound, music map and captions.
 
-### A — Attention (0:00–0:08)
-**VO:** "One crore in revenue. Zero funding. Thirteen thousand, four hundred fifty-six players in a single tournament. I'm Kshitiz. Here's how."
+| AIDA | Time | Scenes |
+|---|---|---|
+| **Attention** | 0:00–0:10 | ₹1Cr+ · zero funding · 13,456 players · name card |
+| **Interest** | 0:10–0:39 | Bengaluru · DnC Ventures · Campus Clash India · Planiva · NASSCOM AI in Manufacturing |
+| **Desire** | 0:39–1:06 | TiE Global finalist · Ctruh (APM by role, generalist problem solver by work; Academy, CMS, Studio v1; social media and launch events) · Desportz · "Engineer by training. Operator by habit." |
+| **Action** | 1:06–1:16 | "Zero-to-one problem? Let's build it." · end card with contact links |
 
-### I — Interest (0:08–0:32)
-**VO:** "I'm an AI product engineer from Bengaluru. I co-founded DnC Ventures: five divisions, three hundred campus ambassadors, campaigns for Infinix, MSI, Swish and Krafton. We launched Campus Clash India, with Grand Finals at IIT Kharagpur. And I'm building Planiva, an AI that drafts a full event plan in fifteen minutes, not sixteen hours."
-
-### D — Desire (0:32–0:50)
-**VO:** "TiE Global finalist. Top three percent of five thousand. Today I'm an Associate Product Manager at Ctruh, where our marketplace shipped with zero critical bugs. I also teach esports marketing at Desportz. Engineer by training. Operator by habit."
-
-### A — Action (0:50–1:00)
-**VO:** "If you have a zero-to-one problem, let's build it. Kshitiz Trigunayat. Say hello."
-
----
-
-## 3. Storyboard
-
-Visual language = the site: near-black `#0f0f0d`, cream `#f1ede4`, orange `#ff6a2b`; Clash Display for big words, Instrument Serif *italic* for emphasis, JetBrains Mono for small labels; faint grid-paper background throughout.
-
-| # | Time | On-screen | Motion |
-|---|---|---|---|
-| 1 | 0:00–0:03 | Huge **₹1Cr+**, then **0 funding** | Numbers count up from 0, hard cut on the beat |
-| 2 | 0:03–0:08 | **13,456 players** then name card: **Kshitiz Trigunayat.** | Count-up, then the orange period slams in at the end of the name |
-| 3 | 0:08–0:13 | "AI Product Engineer · Bengaluru" with map pin | Grid paper slides in, pin drops on Bengaluru |
-| 4 | 0:13–0:22 | **DnC Ventures**: 5 division tiles snap together; **300+** ambassadors as dots spreading across a map of India; logos Infinix · MSI · Swish · Krafton | Tiles snap into a 5-block grid, dots ripple out from one point, logos stagger in |
-| 5 | 0:22–0:27 | **Campus Clash India**: finals photo/clip, **IIT Kharagpur** label | Photo reveals with a wipe, label types on |
-| 6 | 0:27–0:32 | **Planiva**: UI screenshot; clock spins 16 hrs then collapses to **15 min** | Clock hand whips round, number swaps with a flip |
-| 7 | 0:32–0:38 | **TiE Global Finalist** badge + **Top 3% of 5,000+** | Badge stamps in; a bar fills to 97% |
-| 8 | 0:38–0:46 | **Ctruh** — "Marketplace: 0 critical bugs" and **Desportz** — "Esports Marketing faculty" | Two cards slide in from the sides, "0" pulses |
-| 9 | 0:46–0:50 | "Engineer by training. *Operator* by habit." | Words land one at a time; *Operator* in orange serif italic |
-| 10 | 0:50–0:56 | "Zero-to-one problem? Let's build it." | Big type, grid lines converge to centre |
-| 11 | 0:56–1:00 | Email, LinkedIn, URL, **KT/** logo | Links fade up; logo mark holds on the final beat |
-
-Sound: one instrumental track around 100–110 BPM, cuts on the beat. Subtle whoosh on transitions, a "tick" on each count-up. Duck the music 6 dB under the voiceover.
+Visual language = the site: near-black `#0f0f0d`, cream `#f1ede4`, orange `#ff6a2b`; Clash Display for big words, Instrument Serif *italic* for emphasis, JetBrains Mono for small labels; grid-paper background.
 
 ---
 

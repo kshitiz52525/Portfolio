@@ -485,7 +485,7 @@ function About() {
             </p>
             <p>
               On the product side, I built Zordie AI&apos;s resume intelligence system, and I&apos;m now
-              building agentic AI products at Ctruh. I&apos;m also building Planiva, an agentic
+              taking Ctruh Academy, the Ctruh CMS and Studio v1 end to end. I&apos;m also building Planiva, an agentic
               platform for event planning that was a TiE Global University Accelerator finalist and was
               rated in the top 3% of 5,000+ at Tavastra Startup Village.
             </p>

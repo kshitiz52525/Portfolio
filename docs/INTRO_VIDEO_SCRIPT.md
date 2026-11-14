@@ -1,8 +1,10 @@
-# Intro video: detailed shot-by-shot script
+# Intro video: detailed shot-by-shot script (v2)
 
-60 seconds · 1920×1080 · 30 fps · **120 BPM**, so 1 beat = 0.5 s and 1 bar = 2 s. Every scene starts on a bar line so cuts land on the music.
-Structure: **A**ttention (0:00–0:10) → **I**nterest (0:10–0:33) → **D**esire (0:33–0:50) → **A**ction (0:50–1:00).
-Summary plan and storyboard: see [INTRO_VIDEO_PLAN.md](INTRO_VIDEO_PLAN.md).
+76 seconds · 1920×1080 · 30 fps · **120 BPM**, so 1 beat = 0.5 s and 1 bar = 2 s. Every scene starts on a bar line so cuts land on the music.
+Structure: **A**ttention (0:00–0:10) → **I**nterest (0:10–0:39) → **D**esire (0:39–1:06) → **A**ction (1:06–1:16).
+Summary plan: see [INTRO_VIDEO_PLAN.md](INTRO_VIDEO_PLAN.md).
+
+**What changed in v2:** added the NASSCOM AI in Manufacturing course (new Scene 9); rewrote the Ctruh scene to match what you actually did (Academy, CMS and Studio v1 end to end, plus social media and launch events; the marketplace is no longer claimed as yours); added "APM by role, generalist problem solver by work"; length grew from 60 s to 76 s.
 
 ---
 
@@ -20,7 +22,7 @@ Summary plan and storyboard: see [INTRO_VIDEO_PLAN.md](INTRO_VIDEO_PLAN.md).
 | Safe margins | 120 px all sides; captions sit in the bottom 150 px |
 | Default ease | `cubic-bezier(0.22, 1, 0.36, 1)` (same as the website) |
 | Default entrance | 12 frames (0.4 s), slide up 40 px + fade in |
-| Default exit | 6 frames (0.2 s), fade only, never slide out (keeps it calm) |
+| Default exit | 6 frames (0.2 s), fade only, never slide out |
 | Count-ups | 24 frames, ease-out quart, tabular numerals |
 | Captions | Burned in, cream on a 60% black bar, max 2 lines, 42 chars per line |
 
@@ -30,48 +32,48 @@ Rule of thumb: one idea per scene, one big number or word on screen, everything 
 
 ## 1. Scene-by-scene script
 
-### SCENE 1 · Attention · 0:00–0:02 (bar 1)
+### SCENE 1 · Attention · 0:00–0:02
 - **VO:** "One crore in revenue."
 - **On screen:** `₹0` → **₹1Cr+** (centred, ~320 px). Small label above: `REVENUE`.
 - **Visual:** Black frame. Grid paper fades in under the number.
-- **Animation:** Number counts up 0 → 1 over 24 frames. On the last frame the **+** pops in with a 110% overshoot and settles. A thin orange underline draws left to right beneath it.
+- **Animation:** Counts up 0 → 1 over 24 frames. On the last frame the **+** pops in with a 110% overshoot and settles. A thin orange underline draws left to right.
 - **Sound:** A single low "thump" on frame 0. Music starts: kick only.
 - **Out:** Hard cut on beat 4.
 
-### SCENE 2 · Attention · 0:02–0:04 (bar 2)
+### SCENE 2 · Attention · 0:02–0:04
 - **VO:** "Zero funding."
-- **On screen:** **0** (huge, orange) and the words `external funding`.
-- **Visual:** The ₹1Cr+ shrinks to the top-left corner as a small tag, so the two facts sit together.
+- **On screen:** **0** (huge, orange) and `external funding`.
+- **Visual:** The ₹1Cr+ shrinks to the top-left as a small tag, so both facts sit together.
 - **Animation:** "0" scales from 140% to 100% with a quick shake (4 px, 6 frames) like a stamp landing.
 - **Sound:** Stamp hit. Hi-hat enters.
 - **Out:** Hard cut.
 
-### SCENE 3 · Attention · 0:04–0:08 (bars 3–4)
+### SCENE 3 · Attention · 0:04–0:08
 - **VO:** "Thirteen thousand, four hundred fifty-six players, in a single tournament."
-- **On screen:** **13,456** (counting up) and label `PLAYERS · ONE TOURNAMENT`.
-- **Visual:** 2,988 tiny dots (one per team) fill the background in a scatter, in 10% cream. Sub-label: `2,988 teams`.
-- **Animation:** Dots pop in randomly over 2 s, in time with the count. The number lands at 0:06. Dots then slowly drift to form a loose ring around the number.
-- **Sound:** Rising riser for the last beat.
+- **On screen:** **13,456** (counting up) and `PLAYERS · ONE TOURNAMENT`.
+- **Visual:** 2,988 tiny dots (one per team) scatter in the background in 10% cream. Sub-label: `2,988 teams`.
+- **Animation:** Dots pop in randomly over 2 s, in time with the count. The number lands at 0:06. Dots then drift into a loose ring around the number.
+- **Sound:** Riser on the last beat.
 - **Out:** Riser cuts to silence for 3 frames (the "gap"), then Scene 4.
 
-### SCENE 4 · Attention · 0:08–0:10 (bar 5)
+### SCENE 4 · Attention · 0:08–0:10
 - **VO:** "I'm Kshitiz. Here's how."
 - **On screen:** **Kshitiz Trigunayat** on two lines, large; orange full stop after "Trigunayat".
-- **Visual:** Clean, nothing else. The dots from Scene 3 have gone.
+- **Visual:** Clean, nothing else. The dots have gone.
 - **Animation:** Each line slides up from behind a mask (like the site's headline). The orange full stop drops in last with a small bounce.
-- **Sound:** Music drops in full: bass + drums + melody. This is the hook payoff.
+- **Sound:** Music drops in full: bass + drums + melody. The hook payoff.
 - **Out:** Name slides up and out as the next scene's grid slides in.
 
 ---
 
-### SCENE 5 · Interest · 0:10–0:13 (1.5 bars; ends on beat 2 of bar 7)
+### SCENE 5 · Interest · 0:10–0:13
 - **VO:** "I'm an AI product engineer from Bengaluru."
 - **On screen:** `AI PRODUCT ENGINEER` (mono label), **Bengaluru, India** (large).
-- **Visual:** Simple dark map outline of India in the right half. Bengaluru is a small orange pin.
-- **Animation:** The map outline draws itself (stroke animation, 18 frames). The pin drops from above and lands with a small ripple ring that expands and fades.
+- **Visual:** Simple dark outline map of India in the right half. Bengaluru is a small orange pin.
+- **Animation:** The map outline draws itself (stroke animation, 18 frames). The pin drops from above and lands with a ripple ring that expands and fades.
 - **Sound:** Soft "pluck" on the pin landing.
 
-### SCENE 6 · Interest · 0:13–0:21 (4 bars) — DnC Ventures
+### SCENE 6 · Interest · 0:13–0:21 — DnC Ventures
 - **VO:** "I co-founded DnC Ventures: five divisions, three hundred-plus campus ambassadors, campaigns for Infinix, MSI, Swish and Krafton."
 - **On screen (builds in 3 beats):**
   1. **DnC Ventures** + `CO-FOUNDER` (0:13–0:15)
@@ -80,33 +82,49 @@ Rule of thumb: one idea per scene, one big number or word on screen, everything 
 - **Visual:** The map from Scene 5 stays faint in the background. Dots spread from Bengaluru across it as ambassadors.
 - **Animation:**
   - Tiles slide in from alternating sides and snap into a 5-block strip, 3 frames apart.
-  - Ambassador dots ripple outward from the pin until they cover the map (about 300 dots, density only, no need to be exact).
+  - About 300 ambassador dots ripple outward from the pin until they cover the map (density only, no need to be exact).
   - Logos fade up one by one, 6 frames apart, desaturated to cream.
-- **Sound:** A "click" on each tile; a soft whoosh as dots spread; light "tick" per logo.
+- **Sound:** A "click" on each tile; a soft whoosh as dots spread; a light "tick" per logo.
 - **Asset needed:** Four logos (with permission).
 
-### SCENE 7 · Interest · 0:21–0:27 (3 bars) — Campus Clash India
+### SCENE 7 · Interest · 0:21–0:27 — Campus Clash India
 - **VO:** "Then we launched our own esports IP: Campus Clash India. Grand Finals at IIT Kharagpur."
 - **On screen:** `OWN IP`, **Campus Clash India**, then `GRAND FINALS · IIT KHARAGPUR`, then `7,500+ in the crowd`.
-- **Visual:** A photo or clip from the finals, full-bleed, darkened 40%. Title sits over it. If no footage: tournament bracket graphic.
-- **Animation:** Photo reveals with a left-to-right wipe (14 frames) and slow 5% push-in for the whole scene. Title types on in mono for the label and slides up for the name. The "7,500+" counts up at the end.
+- **Visual:** A photo or clip from the finals, full-bleed, darkened 40%. If no footage: a tournament bracket graphic.
+- **Animation:** Photo reveals with a left-to-right wipe (14 frames) and a slow 5% push-in for the whole scene. The label types on in mono; the name slides up. "7,500+" counts up at the end.
 - **Sound:** Crowd roar sample, low in the mix, rising under the VO and cut at the scene end.
 - **Asset needed:** Finals photo or 5–10 s clip.
 
-### SCENE 8 · Interest · 0:27–0:33 (3 bars) — Planiva
+### SCENE 8 · Interest · 0:27–0:33 — Planiva
 - **VO:** "And Planiva: an AI that drafts a full event plan in fifteen minutes, not sixteen hours."
 - **On screen:** **Planiva**, `AGENTIC AI FOR EVENTS`, then `16–22 hrs` (struck through) → **15 min**.
-- **Visual:** Left: a screenshot of the Planiva product in a simple browser frame. Right: a large analogue clock.
+- **Visual:** Left: a Planiva screenshot in a simple browser frame. Right: a large analogue clock.
 - **Animation:**
   - The screenshot slides in with a slight 3D tilt.
-  - The clock hand spins fast (a few full turns) while "16–22 hrs" appears. A strike-through line draws across it.
-  - The hand snaps to a quarter turn, the number flips to **15 min** in orange (card-flip, 10 frames).
-- **Sound:** Fast ticking that speeds up, then a satisfying "ding" at 15 min.
+  - The clock hand spins fast (a few turns) while "16–22 hrs" appears; a strike-through line draws across it.
+  - The hand snaps to a quarter turn and the number flips to **15 min** in orange (card flip, 10 frames).
+- **Sound:** Fast ticking that speeds up, then a "ding" at 15 min.
 - **Asset needed:** 2–3 Planiva screenshots or a short screen recording.
+
+### SCENE 9 · Interest · 0:33–0:39 — NASSCOM course *(new)*
+- **VO:** "I also designed four modules of NASSCOM's AI in Manufacturing course, now live on FutureSkills Prime."
+- **On screen:**
+  - `NASSCOM FUTURESKILLS PRIME` (label)
+  - **AI in Manufacturing** (large)
+  - Module chips: `Predictive Maintenance` · `Computer Vision QC` · `Digital Twins`
+  - **4 modules designed** and a small orange **LIVE** badge
+  - Small credit line: `with Naxxatra Sciences`
+- **Visual:** A stylised factory line across the lower third: a conveyor belt with boxes moving left to right.
+- **Animation:**
+  - Beat 1 (0:33): title slides up while the conveyor starts moving.
+  - Beat 2 (0:34–0:36): each chip lights up in turn, and a mini-visual plays above it. Predictive Maintenance: a vibration waveform that spikes, then flat-lines to "alert". Computer Vision QC: a scanning box drawn around a conveyor item, which flashes orange on a defect. Digital Twins: a wireframe cube that duplicates itself into a ghost copy.
+  - Beat 3 (0:37–0:39): "4 modules designed" counts up 0 → 4 and the **LIVE** badge pulses once.
+- **Sound:** Soft machine hum under the VO, a "beep" on the defect, a short "ding" on LIVE.
+- **Asset needed:** Screenshot of the course page (futureskillsprime.in/course/ai-in-manufacturing) for a 1-second cutaway on the LIVE beat.
 
 ---
 
-### SCENE 9 · Desire · 0:33–0:38 (2.5 bars)
+### SCENE 10 · Desire · 0:39–0:44
 - **VO:** "TiE Global finalist. Top three percent of five thousand."
 - **On screen:** `TiE GLOBAL UNIVERSITY ACCELERATOR` + **Finalist**; then **Top 3%** `of 5,000+ · Tavastra Startup Village`.
 - **Visual:** A round badge on the left; on the right a horizontal bar of 100 small blocks.
@@ -114,52 +132,67 @@ Rule of thumb: one idea per scene, one big number or word on screen, everything 
 - **Sound:** Stamp hit, then a rising shimmer as the bar fills.
 - **Asset needed:** TiE Global badge or certificate (optional, can be drawn).
 
-### SCENE 10 · Desire · 0:38–0:46 (4 bars) — Ctruh and Desportz
-- **VO:** "Now I'm an Associate Product Manager at Ctruh. Our marketplace shipped with zero critical bugs. I also teach esports marketing at Desportz."
-- **On screen:** Two cards, left then right:
-  - `NOW` · **Ctruh Technologies** · Associate Product Manager · **0 critical bugs**
-  - `FACULTY` · **Desportz** · Esports Marketing & Business Development
-- **Visual:** Cards sit on the grid paper. The Ctruh card has a status line: `MARKETPLACE: SHIPPED` with an orange tick.
-- **Animation:** Ctruh card slides in from the left (0:38), the orange tick draws itself and "0" pulses once. Desportz card slides in from the right at 0:42. Both hold, slightly floating (2 px, slow sine).
-- **Sound:** Two soft "whoosh + tick" pairs.
-- **Note:** Say the Desportz dates only on the website, not in the video.
+### SCENE 11 · Desire · 0:44–0:58 — Ctruh *(rewritten)*
+- **VO:** "At Ctruh, I'm an Associate Product Manager by role, and a generalist problem solver by work. I've taken Ctruh Academy, our CMS and Studio v1 end to end, and I run social media and launch events."
+- **On screen (builds in 4 beats):**
+  1. Split title: `APM` **by role** / `GENERALIST PROBLEM SOLVER` **by work** (0:44–0:47)
+  2. Three product cards, each with an `END TO END` tag: **Ctruh Academy** (learning platform) · **Ctruh CMS** (internal tool) · **Ctruh Studio v1** (0:47–0:53)
+  3. Two chips below: `Social media marketing` · `Launch event management` (0:53–0:56)
+  4. Hold with a small line: `Ctruh Technologies · Bengaluru` (0:56–0:58)
+- **Visual:** Cards sit on the grid paper. Each card shows a simple UI wireframe of the product (Academy: course tiles; CMS: table and form; Studio: 3D canvas). Replace with real screenshots if cleared.
+- **Animation:**
+  - Beat 1: "by role" and "by work" flip like a split-flap display, to show the two sides of the job.
+  - Beat 2: cards slide up one by one, 8 frames apart; each `END TO END` tag stamps in.
+  - Beat 3: chips pop in with a small bounce.
+  - Cards float gently (2 px sine) during the hold.
+- **Sound:** Split-flap clatter on beat 1; soft "pop" per card and chip.
+- **Do not claim:** the marketplace as yours. If you want it mentioned, keep it small, as `QA on the marketplace`.
+- **Asset needed:** Screenshots of Academy, CMS and Studio v1 (check you are cleared to show them); Ctruh logo.
 
-### SCENE 11 · Desire · 0:46–0:50 (2 bars) — The line that sums you up
+### SCENE 12 · Desire · 0:58–1:02 — Desportz
+- **VO:** "I also teach esports marketing at Desportz."
+- **On screen:** `FACULTY` · **Desportz** · `Esports Marketing & Business Development`.
+- **Visual:** A single card centred on the grid.
+- **Animation:** Card slides in from the right; a small whistle-style underline draws beneath "Desportz".
+- **Sound:** "Whoosh + tick".
+- **Note:** Mention the dates on the website only, not in the video.
+
+### SCENE 13 · Desire · 1:02–1:06 — The line that sums you up
 - **VO:** "Engineer by training. Operator by habit."
-- **On screen:** "Engineer by training." (cream) then "*Operator* by habit." with *Operator* in orange Instrument Serif italic.
+- **On screen:** "Engineer by training." (cream), then "*Operator* by habit." with *Operator* in orange Instrument Serif italic.
 - **Visual:** Pure typography on the grid. Nothing else.
-- **Animation:** Each word lands on its own beat (4 words per line, so 2 per beat): scale from 120% to 100% with fade. A short pause before "Operator" so it lands as the punchline.
+- **Animation:** Words land on the beat (two per beat): scale from 120% to 100% with fade. A short pause before "Operator" so it lands as the punchline.
 - **Sound:** Music drops to bass only for this line, then rebuilds on the last beat.
 
 ---
 
-### SCENE 12 · Action · 0:50–0:56 (3 bars)
+### SCENE 14 · Action · 1:06–1:12
 - **VO:** "Got a zero-to-one problem? Let's build it."
 - **On screen:** **Got a zero-to-one problem?** (cream), then **Let's build it.** (orange).
 - **Visual:** The grid lines converge toward the centre like a vanishing point.
-- **Animation:** The first line types in; a 6-frame beat of nothing; then the second line slams in bigger. The grid lines slide inward over the whole scene.
+- **Animation:** The first line types in; a 6-frame pause; the second line slams in bigger. The grid lines slide inward over the whole scene.
 - **Sound:** Music builds to its peak; a short riser into the end card.
 
-### SCENE 13 · Action · 0:56–1:00 (2 bars) — End card
+### SCENE 15 · Action · 1:12–1:16 — End card
 - **VO:** "Kshitiz Trigunayat. Say hello."
-- **On screen:** **KT/** logo mark centred; below it: `kshitiz52.525@gmail.com` · `linkedin.com/in/kshitiz-trigunayat` · `[your-site-url]`.
+- **On screen:** **KT/** logo mark centred; below it `kshitiz52.525@gmail.com` · `linkedin.com/in/kshitiz-trigunayat` · `[your-site-url]`.
 - **Visual:** Dark clean frame. The orange slash in "KT/" is the only colour.
-- **Animation:** Logo fades up (12 frames). Links stagger in 4 frames apart. The orange slash pulses gently twice. Hold the last 1.5 s with no motion so people can read the links.
-- **Sound:** Final hit on the downbeat of 0:56, music rings out and fades by 1:00.
+- **Animation:** Logo fades up (12 frames). Links stagger in 4 frames apart. The slash pulses gently twice. Hold the last 1.5 s with no motion so people can read the links.
+- **Sound:** Final hit on the downbeat of 1:12; music rings out and fades by 1:16.
 
 ---
 
-## 2. Clean voiceover (read straight through, about 135 words)
+## 2. Clean voiceover (read straight through, about 185 words)
 
 > One crore in revenue. Zero funding. Thirteen thousand, four hundred fifty-six players, in a single tournament. I'm Kshitiz. Here's how.
 >
-> I'm an AI product engineer from Bengaluru. I co-founded DnC Ventures: five divisions, three hundred-plus campus ambassadors, campaigns for Infinix, MSI, Swish and Krafton. Then we launched our own esports IP: Campus Clash India. Grand Finals at IIT Kharagpur. And Planiva: an AI that drafts a full event plan in fifteen minutes, not sixteen hours.
+> I'm an AI product engineer from Bengaluru. I co-founded DnC Ventures: five divisions, three hundred-plus campus ambassadors, campaigns for Infinix, MSI, Swish and Krafton. Then we launched our own esports IP: Campus Clash India. Grand Finals at IIT Kharagpur. And Planiva: an AI that drafts a full event plan in fifteen minutes, not sixteen hours. I also designed four modules of NASSCOM's AI in Manufacturing course, now live on FutureSkills Prime.
 >
-> TiE Global finalist. Top three percent of five thousand. Now I'm an Associate Product Manager at Ctruh. Our marketplace shipped with zero critical bugs. I also teach esports marketing at Desportz. Engineer by training. Operator by habit.
+> TiE Global finalist. Top three percent of five thousand. At Ctruh, I'm an Associate Product Manager by role, and a generalist problem solver by work. I've taken Ctruh Academy, our CMS and Studio v1 end to end, and I run social media and launch events. I also teach esports marketing at Desportz. Engineer by training. Operator by habit.
 >
 > Got a zero-to-one problem? Let's build it. Kshitiz Trigunayat. Say hello.
 
-Delivery notes: calm, confident, not salesy. Pause a full half-second after "Zero funding" and after "Here's how." Lift your voice slightly on "Top three percent." Slow down on the final line.
+Delivery notes: calm, confident, not salesy. Pause a full half-second after "Zero funding" and after "Here's how." Lift your voice slightly on "Top three percent." Slow down on "by role" and "by work". Slow down on the final line.
 
 ---
 
@@ -199,25 +232,35 @@ Then we launched our own esports IP: Campus Clash India. Grand Finals at IIT Kha
 And Planiva: an AI that drafts a full event plan in 15 minutes, not 16 hours.
 
 9
-00:00:33,000 --> 00:00:38,000
-TiE Global finalist. Top 3% of 5,000.
+00:00:33,000 --> 00:00:39,000
+I also designed four modules of NASSCOM's AI in Manufacturing course, now live on FutureSkills Prime.
 
 10
-00:00:38,000 --> 00:00:46,000
-Now I'm an Associate Product Manager at Ctruh. Our marketplace shipped with zero critical bugs. I also teach esports marketing at Desportz.
+00:00:39,000 --> 00:00:44,000
+TiE Global finalist. Top 3% of 5,000.
 
 11
-00:00:46,000 --> 00:00:50,000
-Engineer by training. Operator by habit.
+00:00:44,000 --> 00:00:58,000
+At Ctruh, I'm an Associate Product Manager by role, and a generalist problem solver by work. I've taken Ctruh Academy, our CMS and Studio v1 end to end, and I run social media and launch events.
 
 12
-00:00:50,000 --> 00:00:56,000
-Got a zero-to-one problem? Let's build it.
+00:00:58,000 --> 00:01:02,000
+I also teach esports marketing at Desportz.
 
 13
-00:00:56,000 --> 00:01:00,000
+00:01:02,000 --> 00:01:06,000
+Engineer by training. Operator by habit.
+
+14
+00:01:06,000 --> 00:01:12,000
+Got a zero-to-one problem? Let's build it.
+
+15
+00:01:12,000 --> 00:01:16,000
 Kshitiz Trigunayat. Say hello.
 ```
+
+(For burned-in captions, split the long lines in 6, 11 and 9 into two 2-line blocks so they stay under 42 characters per line.)
 
 ---
 
@@ -228,13 +271,13 @@ Kshitiz Trigunayat. Say hello.
 | 0:00–0:04 | 1–2 | Kick and sub only, sparse |
 | 0:04–0:08 | 3–4 | Add hi-hats, build with a riser |
 | 0:08–0:10 | 5 | Full drop (bass, drums, lead) |
-| 0:10–0:33 | 6–16 | Steady groove, light melody, duck −6 dB under voice |
-| 0:33–0:46 | 17–23 | Slightly brighter, add pads |
-| 0:46–0:50 | 24–25 | Drop to bass only, rebuild on the last beat |
-| 0:50–0:56 | 26–28 | Build to peak |
-| 0:56–1:00 | 29–30 | Final hit, then ring out and fade |
+| 0:10–0:39 | 6–19 | Steady groove, light melody, duck −6 dB under voice |
+| 0:39–1:02 | 20–31 | Slightly brighter, add pads |
+| 1:02–1:06 | 32–33 | Drop to bass only, rebuild on the last beat |
+| 1:06–1:12 | 34–36 | Build to peak |
+| 1:12–1:16 | 37–38 | Final hit, then ring out and fade |
 
-Use royalty-free electronic or lo-fi-pop (Artlist, Epidemic Sound, or YouTube Audio Library). Check the licence covers commercial use.
+Use royalty-free electronic or lo-fi-pop (Artlist, Epidemic Sound, YouTube Audio Library). Check the licence covers commercial use.
 
 ---
 
@@ -247,11 +290,17 @@ Use royalty-free electronic or lo-fi-pop (Artlist, Epidemic Sound, or YouTube Au
 | 6 | **Logos: Infinix, MSI India, Swish, Krafton (permission needed)** |
 | 7 | **Campus Clash India finals photo or clip** |
 | 8 | **2–3 Planiva screenshots or a screen recording** |
-| 9 | TiE Global badge (optional) |
-| 10 | Ctruh logo (check you can use it); Desportz logo |
-| 13 | KT/ logo mark, final website URL |
+| 9 | **NASSCOM course page screenshot**; NASSCOM FutureSkills Prime and Naxxatra Sciences logos (check permission) |
+| 10 | TiE Global badge (optional) |
+| 11 | **Screenshots of Ctruh Academy, CMS and Studio v1** (check you are cleared); Ctruh logo |
+| 12 | Desportz logo |
+| 15 | KT/ logo mark, final website URL |
 
 ## 6. Facts to double-check before recording
 
-These are used in the video and should match the site: ₹1Cr+ revenue, zero external funding, 13,456 players and 2,988 teams, 300+ ambassadors across 200+ institutions, 7,500+ footfall at the finals, 15 minutes vs 16–22 hours (Planiva), TiE Global finalist, top 3% of 5,000+, zero critical bugs at Ctruh.
-Also confirm you are cleared to show the Ctruh name and the four client logos publicly.
+- ₹1Cr+ revenue, zero external funding, 13,456 players and 2,988 teams, 300+ ambassadors across 200+ institutions, 7,500+ footfall at the finals.
+- Planiva: 15 minutes for a first draft vs 16–22 hours manual.
+- NASSCOM: four modules designed, live on FutureSkills Prime. Please confirm the **names of all four modules** (only three are on the site: Predictive Maintenance, Computer Vision QC, Digital Twins).
+- TiE Global finalist, top 3% of 5,000+.
+- Ctruh: Academy, CMS and Studio v1 end to end; social media marketing; launch event management.
+- You are cleared to show the Ctruh name and product screens, the NASSCOM name, and the four client logos publicly.

@@ -99,7 +99,7 @@ export const timelineChapters: TimelineChapter[] = [
     year: "Jul 2026–Present",
     place: "Bengaluru, India",
     title: "Ctruh Technologies.",
-    body: "Associate Product Manager, designing product experiences and agentic marketing systems.",
+    body: "APM by role, generalist problem solver by work. Owning Ctruh Academy, the Ctruh CMS and Ctruh Studio v1 end to end, plus social media marketing and launch events.",
     tag: "Now",
     highlight: true,
   },

@@ -102,47 +102,47 @@ export const projects: Project[] = [
   {
     slug: "ctruh",
     title: "Ctruh Technologies — Associate Product Manager",
-    category: "Product / AI Systems",
+    category: "Product / Generalist",
     year: "Jul 2026–Present",
-    metric: "Marketplace shipped to production with zero critical bugs",
+    metric: "3 products taken end to end: Academy, CMS and Studio v1 · plus social media and launch events",
     description:
-      "Designing product experiences end to end at Ctruh — Academy learner and admin, CMS 2.0, Studio 2.0 onboarding, and IRIS, an AR try-on mirror — from Figma to PRD to dev handoff, plus agentic architecture for AI Marketing Studio.",
-    stack: ["Product", "Figma", "PRD", "QA", "Agentic AI"],
+      "APM by role, generalist problem solver by work. At Ctruh I own Ctruh Academy (learning platform), the internal Ctruh CMS and Ctruh Studio v1 end to end, manage social media marketing, run launch events, and contribute QA on the marketplace.",
+    stack: ["Product", "Figma", "PRD", "QA", "Social Media", "Event Management"],
     size: "large",
     client: "Ctruh Technologies",
     role: "Associate Product Manager",
     featured: true,
     caseStudy: {
       problem:
-        "Ctruh builds immersive 3D and AR products. It needed several product experiences designed, specified and shipped fast, with zero critical bugs in production, while also betting on agentic AI for its next product line.",
+        "Ctruh builds immersive 3D and AR products. A small team needed products shipped and launched fast, and needed someone who would pick up whatever was blocking progress, from product specs to marketing to launch day.",
       approach: [
         {
-          title: "Four experiences, end to end",
-          body: "Designed Academy (learner + admin), CMS 2.0, Studio 2.0 onboarding and IRIS — an AR try-on mirror — carrying each from Figma through PRD to developer handoff.",
+          title: "Three products, end to end",
+          body: "Took Ctruh Academy (a learning platform), the internal Ctruh CMS and Ctruh Studio v1 from problem definition and PRD through design, developer handoff and launch.",
         },
         {
-          title: "Ship the marketplace clean",
-          body: "Ran the marketplace through structured QA before release; it shipped to production with zero critical bugs.",
+          title: "Own the go-to-market too",
+          body: "Managed Ctruh's social media marketing and the launch event management, so the products had an audience when they shipped.",
         },
         {
-          title: "Architect the agentic layer",
-          body: "Wrote the agentic architecture plans for AI Marketing Studio, which helps brands plan marketing campaigns end to end.",
+          title: "Quality on the marketplace",
+          body: "Contributed structured testing to the Ctruh marketplace. The product was not mine end to end, but QA was my part of getting it out cleanly.",
         },
       ],
       decisions: [
         {
           title: "PRD-first, not ticket-first",
-          body: "Writing full PRDs before handoff kept a fast-moving team aligned on edge cases — the reason the marketplace shipped without critical bugs.",
+          body: "Writing full PRDs before handoff kept a fast-moving team aligned on edge cases and scope.",
         },
         {
-          title: "Design agentic flows like product flows",
-          body: "For AI Marketing Studio, agent loops were specified with the same rigor as UI: clear inputs, approvals and failure states.",
+          title: "Generalist over specialist",
+          body: "On a small team the highest-value work moves between product, marketing and operations, so I chose to cover all three rather than stay in one lane.",
         },
       ],
       outcomes: [
-        { value: "4", label: "Product experiences designed end to end" },
-        { value: "0", label: "Critical bugs in the shipped marketplace" },
-        { value: "Studio", label: "Agentic architecture plan for AI Marketing" },
+        { value: "3", label: "Products end to end: Academy · CMS · Studio v1" },
+        { value: "Social + Launch", label: "Marketing and launch event management" },
+        { value: "QA", label: "Testing contribution on the marketplace" },
       ],
     },
   },

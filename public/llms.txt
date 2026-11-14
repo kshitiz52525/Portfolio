@@ -12,7 +12,7 @@ The site is an editorial portfolio with deep-dive case studies (event photos liv
 ## Case studies
 
 - [Planiva](/work/planiva): Agentic AI for event management — LangGraph, Postgres + pgvector, Twilio. First draft of an ₹8L, 150-guest wedding plan ready in 15 minutes vs 16–22 hours manually. TiE Global finalist.
-- [Ctruh Technologies](/work/ctruh): Associate Product Manager, Jul 2026–present. Marketplace shipped with zero critical bugs; Academy, CMS 2.0, Studio 2.0, IRIS AR try-on mirror.
+- [Ctruh Technologies](/work/ctruh): Associate Product Manager, Jul 2026–present. Owns Ctruh Academy (learning platform), the internal Ctruh CMS and Ctruh Studio v1 end to end, plus social media marketing and launch events; QA on the marketplace.
 - [DnC Ventures](/work/dnc-ventures): Co-founder, Sep 2024–present. ₹1Cr+ revenue, five divisions, 300+ ambassadors across 200+ institutions, 750K+ footfall, clients include Infinix Mobiles, MSI India, Swish, Krafton and many more.
 - [Campus Clash India](/work/campus-clash): Own esports IP under DnC — 13,456 players, 2,988 teams, Grand Finals at IIT Kharagpur with 7,500+ footfall.
 - [WrestleFan Entertainment](/work/wrestlefan): Financials, revenue projections and GTM for Shark Tank India Season 5.
