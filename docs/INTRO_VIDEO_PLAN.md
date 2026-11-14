@@ -26,7 +26,7 @@ The full shot-by-shot script (15 scenes, about 76 seconds) lives in **[INTRO_VID
 |---|---|---|
 | **Attention** | 0:00–0:10 | ₹1Cr+ · zero funding · 13,456 players · name card |
 | **Interest** | 0:10–0:39 | Bengaluru · DnC Ventures · Campus Clash India · Planiva · NASSCOM AI in Manufacturing |
-| **Desire** | 0:39–1:06 | TiE Global finalist · Ctruh (APM by role, generalist problem solver by work; Academy, CMS, Studio v1; social media and launch events) · Desportz · "Engineer by training. Operator by habit." |
+| **Desire** | 0:39–1:06 | TiE Global finalist · Ctruh (APM by role, generalist problem solver by work; Academy, CMS, Studio v1, IRIS; social media and launch events) · Desportz · "Engineer by training. Operator by habit." |
 | **Action** | 1:06–1:16 | "Zero-to-one problem? Let's build it." · end card with contact links |
 
 Visual language = the site: near-black `#0f0f0d`, cream `#f1ede4`, orange `#ff6a2b`; Clash Display for big words, Instrument Serif *italic* for emphasis, JetBrains Mono for small labels; grid-paper background.

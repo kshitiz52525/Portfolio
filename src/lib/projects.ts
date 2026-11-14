@@ -104,9 +104,9 @@ export const projects: Project[] = [
     title: "Ctruh Technologies — Associate Product Manager",
     category: "Product / Generalist",
     year: "Jul 2026–Present",
-    metric: "3 products taken end to end: Academy, CMS and Studio v1 · plus social media and launch events",
+    metric: "4 products taken end to end: Academy, CMS, Studio v1 and IRIS · plus social media and launch events",
     description:
-      "APM by role, generalist problem solver by work. At Ctruh I own Ctruh Academy (learning platform), the internal Ctruh CMS and Ctruh Studio v1 end to end, manage social media marketing, run launch events, and contribute QA on the marketplace.",
+      "APM by role, generalist problem solver by work. At Ctruh I own four products end to end: Ctruh Academy (learning platform), the internal Ctruh CMS, Ctruh Studio v1 (including AI Marketing Studio) and IRIS (AR try-on mirror). I also manage social media marketing, run launch events, and contribute QA on the marketplace.",
     stack: ["Product", "Figma", "PRD", "QA", "Social Media", "Event Management"],
     size: "large",
     client: "Ctruh Technologies",
@@ -117,8 +117,8 @@ export const projects: Project[] = [
         "Ctruh builds immersive 3D and AR products. A small team needed products shipped and launched fast, and needed someone who would pick up whatever was blocking progress, from product specs to marketing to launch day.",
       approach: [
         {
-          title: "Three products, end to end",
-          body: "Took Ctruh Academy (a learning platform), the internal Ctruh CMS and Ctruh Studio v1 from problem definition and PRD through design, developer handoff and launch.",
+          title: "Four products, end to end",
+          body: "Took Ctruh Academy (a learning platform), the internal Ctruh CMS, Ctruh Studio v1 and IRIS, an AR try-on mirror, from problem definition and PRD through design, developer handoff and launch.",
         },
         {
           title: "Own the go-to-market too",
@@ -140,7 +140,7 @@ export const projects: Project[] = [
         },
       ],
       outcomes: [
-        { value: "3", label: "Products end to end: Academy · CMS · Studio v1" },
+        { value: "4", label: "Products end to end: Academy · CMS · Studio v1 · IRIS" },
         { value: "Social + Launch", label: "Marketing and launch event management" },
         { value: "QA", label: "Testing contribution on the marketplace" },
       ],
@@ -365,7 +365,7 @@ export const projects: Project[] = [
     year: "Mar–May 2026",
     metric: "4 modules designed · lectures & platform submission",
     description:
-      "Designed four modules of NASSCOM's AI in Manufacturing course with Naxxatra Sciences — Predictive Maintenance, Computer Vision QC and Digital Twins — including lectures and the FutureSkills Prime platform submission.",
+      "Designed four modules of NASSCOM's AI in Manufacturing course with Naxxatra Sciences — Predictive Maintenance, Computer Vision QC, Digital Twins and Edge-to-Enterprise Integration (connecting Arduino and Jetson Nano hardware to ERP and SCADA systems) — including lectures and the FutureSkills Prime platform submission.",
     stack: ["Python", "Scikit-learn", "TensorFlow", "Computer Vision"],
     size: "medium",
     client: "NASSCOM FutureSkills Prime",
@@ -377,7 +377,7 @@ export const projects: Project[] = [
       approach: [
         {
           title: "Four industry-grade modules",
-          body: "Authored Predictive Maintenance, Computer Vision QC and Digital Twins modules with code-ready examples in Python, Scikit-learn and TensorFlow.",
+          body: "Authored Predictive Maintenance, Computer Vision QC, Digital Twins and Edge-to-Enterprise Integration modules, the last connecting Arduino and Jetson Nano hardware to ERP and SCADA systems, with code-ready examples in Python, Scikit-learn and TensorFlow.",
         },
         {
           title: "Lectures and platform submission",

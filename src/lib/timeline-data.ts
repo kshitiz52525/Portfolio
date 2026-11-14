@@ -85,7 +85,7 @@ export const timelineChapters: TimelineChapter[] = [
     year: "Mar–May 2026",
     place: "India",
     title: "NASSCOM AI in Manufacturing course.",
-    body: "Designed four modules with Naxxatra Sciences for NASSCOM FutureSkills Prime, covering Predictive Maintenance, Computer Vision QC, and Digital Twins.",
+    body: "Designed four modules with Naxxatra Sciences for NASSCOM FutureSkills Prime, covering Predictive Maintenance, Computer Vision QC, Digital Twins, and Edge-to-Enterprise Integration (connecting Arduino and Jetson Nano to ERP and SCADA).",
     tag: "Work",
   },
   {
@@ -99,7 +99,7 @@ export const timelineChapters: TimelineChapter[] = [
     year: "Jul 2026–Present",
     place: "Bengaluru, India",
     title: "Ctruh Technologies.",
-    body: "APM by role, generalist problem solver by work. Owning Ctruh Academy, the Ctruh CMS and Ctruh Studio v1 end to end, plus social media marketing and launch events.",
+    body: "APM by role, generalist problem solver by work. Owning Ctruh Academy, the Ctruh CMS, Ctruh Studio v1 and IRIS end to end, plus social media marketing and launch events.",
     tag: "Now",
     highlight: true,
   },

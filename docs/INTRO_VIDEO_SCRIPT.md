@@ -4,7 +4,9 @@
 Structure: **A**ttention (0:00–0:10) → **I**nterest (0:10–0:39) → **D**esire (0:39–1:06) → **A**ction (1:06–1:16).
 Summary plan: see [INTRO_VIDEO_PLAN.md](INTRO_VIDEO_PLAN.md).
 
-**What changed in v2:** added the NASSCOM AI in Manufacturing course (new Scene 9); rewrote the Ctruh scene to match what you actually did (Academy, CMS and Studio v1 end to end, plus social media and launch events; the marketplace is no longer claimed as yours); added "APM by role, generalist problem solver by work"; length grew from 60 s to 76 s.
+**What changed in v2:** added the NASSCOM AI in Manufacturing course (new Scene 9, with all four modules); rewrote the Ctruh scene to match what you actually did (Academy, CMS, Studio v1 incl. AI Marketing Studio, and IRIS end to end, plus social media and launch events; the marketplace is no longer claimed as yours); added "APM by role, generalist problem solver by work"; length grew from 60 s to 76 s.
+
+**Constraint:** real Ctruh product screens cannot be shown publicly. Scene 11 therefore uses original abstract illustrations and icons, never actual Ctruh UI. NASSCOM and Naxxatra Sciences names may be used.
 
 ---
 
@@ -107,20 +109,20 @@ Rule of thumb: one idea per scene, one big number or word on screen, everything 
 - **Asset needed:** 2–3 Planiva screenshots or a short screen recording.
 
 ### SCENE 9 · Interest · 0:33–0:39 — NASSCOM course *(new)*
-- **VO:** "I also designed four modules of NASSCOM's AI in Manufacturing course, now live on FutureSkills Prime."
+- **VO:** "I also designed four modules of NASSCOM's AI in Manufacturing course, from predictive maintenance to connecting factory hardware with ERP and SCADA. Now live on FutureSkills Prime."
 - **On screen:**
   - `NASSCOM FUTURESKILLS PRIME` (label)
   - **AI in Manufacturing** (large)
-  - Module chips: `Predictive Maintenance` · `Computer Vision QC` · `Digital Twins`
+  - Four module chips: `Predictive Maintenance` · `Computer Vision QC` · `Digital Twins` · `Edge-to-Enterprise Integration`
   - **4 modules designed** and a small orange **LIVE** badge
   - Small credit line: `with Naxxatra Sciences`
 - **Visual:** A stylised factory line across the lower third: a conveyor belt with boxes moving left to right.
 - **Animation:**
   - Beat 1 (0:33): title slides up while the conveyor starts moving.
-  - Beat 2 (0:34–0:36): each chip lights up in turn, and a mini-visual plays above it. Predictive Maintenance: a vibration waveform that spikes, then flat-lines to "alert". Computer Vision QC: a scanning box drawn around a conveyor item, which flashes orange on a defect. Digital Twins: a wireframe cube that duplicates itself into a ghost copy.
+  - Beat 2 (0:34–0:37): each chip lights up in turn, and a mini-visual plays above it. Predictive Maintenance: a vibration waveform that spikes, then flat-lines to "alert". Computer Vision QC: a scanning box drawn around a conveyor item, which flashes orange on a defect. Digital Twins: a wireframe cube that duplicates itself into a ghost copy. Edge-to-Enterprise Integration: an Arduino board and a Jetson Nano board (simple line icons) connected by an animated line to an ERP table and a SCADA dashboard, with data pulses travelling along the line.
   - Beat 3 (0:37–0:39): "4 modules designed" counts up 0 → 4 and the **LIVE** badge pulses once.
-- **Sound:** Soft machine hum under the VO, a "beep" on the defect, a short "ding" on LIVE.
-- **Asset needed:** Screenshot of the course page (futureskillsprime.in/course/ai-in-manufacturing) for a 1-second cutaway on the LIVE beat.
+- **Sound:** Soft machine hum under the VO, a "beep" on the defect, soft digital "blips" as data pulses travel, a short "ding" on LIVE.
+- **Asset needed:** Screenshot of the public course page (futureskillsprime.in/course/ai-in-manufacturing) for a 1-second cutaway on the LIVE beat. NASSCOM and Naxxatra Sciences names may be used; check logo use separately.
 
 ---
 
@@ -133,21 +135,21 @@ Rule of thumb: one idea per scene, one big number or word on screen, everything 
 - **Asset needed:** TiE Global badge or certificate (optional, can be drawn).
 
 ### SCENE 11 · Desire · 0:44–0:58 — Ctruh *(rewritten)*
-- **VO:** "At Ctruh, I'm an Associate Product Manager by role, and a generalist problem solver by work. I've taken Ctruh Academy, our CMS and Studio v1 end to end, and I run social media and launch events."
+- **VO:** "At Ctruh, I'm an Associate Product Manager by role, and a generalist problem solver by work. I've taken Ctruh Academy, our CMS, Studio v1 and IRIS end to end, and I run social media and launch events."
 - **On screen (builds in 4 beats):**
   1. Split title: `APM` **by role** / `GENERALIST PROBLEM SOLVER` **by work** (0:44–0:47)
-  2. Three product cards, each with an `END TO END` tag: **Ctruh Academy** (learning platform) · **Ctruh CMS** (internal tool) · **Ctruh Studio v1** (0:47–0:53)
+  2. Four product cards, each with an `END TO END` tag: **Ctruh Academy** (learning platform) · **Ctruh CMS** (internal tool) · **Ctruh Studio v1** (incl. AI Marketing Studio) · **IRIS** (AR try-on mirror) (0:47–0:53)
   3. Two chips below: `Social media marketing` · `Launch event management` (0:53–0:56)
   4. Hold with a small line: `Ctruh Technologies · Bengaluru` (0:56–0:58)
-- **Visual:** Cards sit on the grid paper. Each card shows a simple UI wireframe of the product (Academy: course tiles; CMS: table and form; Studio: 3D canvas). Replace with real screenshots if cleared.
+- **Visual:** Cards sit on the grid paper. Each card shows an **original abstract illustration**, not real Ctruh UI (Academy: a book and play icon; CMS: a table-and-pencil icon; Studio: a cube with a spark for AI marketing; IRIS: a mirror outline with a shirt silhouette and AR corner brackets).
 - **Animation:**
   - Beat 1: "by role" and "by work" flip like a split-flap display, to show the two sides of the job.
-  - Beat 2: cards slide up one by one, 8 frames apart; each `END TO END` tag stamps in.
+  - Beat 2: four cards slide up one by one, 6 frames apart; each `END TO END` tag stamps in.
   - Beat 3: chips pop in with a small bounce.
   - Cards float gently (2 px sine) during the hold.
 - **Sound:** Split-flap clatter on beat 1; soft "pop" per card and chip.
 - **Do not claim:** the marketplace as yours. If you want it mentioned, keep it small, as `QA on the marketplace`.
-- **Asset needed:** Screenshots of Academy, CMS and Studio v1 (check you are cleared to show them); Ctruh logo.
+- **Asset needed:** Ctruh logo only if cleared. No product screenshots (not public).
 
 ### SCENE 12 · Desire · 0:58–1:02 — Desportz
 - **VO:** "I also teach esports marketing at Desportz."
@@ -182,13 +184,13 @@ Rule of thumb: one idea per scene, one big number or word on screen, everything 
 
 ---
 
-## 2. Clean voiceover (read straight through, about 185 words)
+## 2. Clean voiceover (read straight through, about 200 words)
 
 > One crore in revenue. Zero funding. Thirteen thousand, four hundred fifty-six players, in a single tournament. I'm Kshitiz. Here's how.
 >
-> I'm an AI product engineer from Bengaluru. I co-founded DnC Ventures: five divisions, three hundred-plus campus ambassadors, campaigns for Infinix, MSI, Swish and Krafton. Then we launched our own esports IP: Campus Clash India. Grand Finals at IIT Kharagpur. And Planiva: an AI that drafts a full event plan in fifteen minutes, not sixteen hours. I also designed four modules of NASSCOM's AI in Manufacturing course, now live on FutureSkills Prime.
+> I'm an AI product engineer from Bengaluru. I co-founded DnC Ventures: five divisions, three hundred-plus campus ambassadors, campaigns for Infinix, MSI, Swish and Krafton. Then we launched our own esports IP: Campus Clash India. Grand Finals at IIT Kharagpur. And Planiva: an AI that drafts a full event plan in fifteen minutes, not sixteen hours. I also designed four modules of NASSCOM's AI in Manufacturing course, from predictive maintenance to connecting factory hardware with ERP and SCADA. Now live on FutureSkills Prime.
 >
-> TiE Global finalist. Top three percent of five thousand. At Ctruh, I'm an Associate Product Manager by role, and a generalist problem solver by work. I've taken Ctruh Academy, our CMS and Studio v1 end to end, and I run social media and launch events. I also teach esports marketing at Desportz. Engineer by training. Operator by habit.
+> TiE Global finalist. Top three percent of five thousand. At Ctruh, I'm an Associate Product Manager by role, and a generalist problem solver by work. I've taken Ctruh Academy, our CMS, Studio v1 and IRIS end to end, and I run social media and launch events. I also teach esports marketing at Desportz. Engineer by training. Operator by habit.
 >
 > Got a zero-to-one problem? Let's build it. Kshitiz Trigunayat. Say hello.
 
@@ -233,7 +235,7 @@ And Planiva: an AI that drafts a full event plan in 15 minutes, not 16 hours.
 
 9
 00:00:33,000 --> 00:00:39,000
-I also designed four modules of NASSCOM's AI in Manufacturing course, now live on FutureSkills Prime.
+I also designed four modules of NASSCOM's AI in Manufacturing course, from predictive maintenance to connecting factory hardware with ERP and SCADA. Now live on FutureSkills Prime.
 
 10
 00:00:39,000 --> 00:00:44,000
@@ -241,7 +243,7 @@ TiE Global finalist. Top 3% of 5,000.
 
 11
 00:00:44,000 --> 00:00:58,000
-At Ctruh, I'm an Associate Product Manager by role, and a generalist problem solver by work. I've taken Ctruh Academy, our CMS and Studio v1 end to end, and I run social media and launch events.
+At Ctruh, I'm an Associate Product Manager by role, and a generalist problem solver by work. I've taken Ctruh Academy, our CMS, Studio v1 and IRIS end to end, and I run social media and launch events.
 
 12
 00:00:58,000 --> 00:01:02,000
@@ -290,9 +292,9 @@ Use royalty-free electronic or lo-fi-pop (Artlist, Epidemic Sound, YouTube Audio
 | 6 | **Logos: Infinix, MSI India, Swish, Krafton (permission needed)** |
 | 7 | **Campus Clash India finals photo or clip** |
 | 8 | **2–3 Planiva screenshots or a screen recording** |
-| 9 | **NASSCOM course page screenshot**; NASSCOM FutureSkills Prime and Naxxatra Sciences logos (check permission) |
+| 9 | NASSCOM course page screenshot (public page); NASSCOM FutureSkills Prime and Naxxatra Sciences names OK, check logo use; Arduino and Jetson Nano line icons (free/simple) |
 | 10 | TiE Global badge (optional) |
-| 11 | **Screenshots of Ctruh Academy, CMS and Studio v1** (check you are cleared); Ctruh logo |
+| 11 | **No Ctruh screenshots (not public).** Original icons/illustrations only; Ctruh logo if cleared |
 | 12 | Desportz logo |
 | 15 | KT/ logo mark, final website URL |
 
@@ -300,7 +302,7 @@ Use royalty-free electronic or lo-fi-pop (Artlist, Epidemic Sound, YouTube Audio
 
 - ₹1Cr+ revenue, zero external funding, 13,456 players and 2,988 teams, 300+ ambassadors across 200+ institutions, 7,500+ footfall at the finals.
 - Planiva: 15 minutes for a first draft vs 16–22 hours manual.
-- NASSCOM: four modules designed, live on FutureSkills Prime. Please confirm the **names of all four modules** (only three are on the site: Predictive Maintenance, Computer Vision QC, Digital Twins).
+- NASSCOM: four modules designed, live on FutureSkills Prime. Fourth module is named **Edge-to-Enterprise Integration** (suggested name; confirm or change). Alternatives: "Connecting the Shop Floor" or "Industrial IoT Integration".
 - TiE Global finalist, top 3% of 5,000+.
-- Ctruh: Academy, CMS and Studio v1 end to end; social media marketing; launch event management.
-- You are cleared to show the Ctruh name and product screens, the NASSCOM name, and the four client logos publicly.
+- Ctruh: Academy, CMS, Studio v1 (incl. AI Marketing Studio) and IRIS end to end; social media marketing; launch event management.
+- You are cleared to show the Ctruh name (no product screens), the NASSCOM and Naxxatra Sciences names, and the four client logos publicly.
