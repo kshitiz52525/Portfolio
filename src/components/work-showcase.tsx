@@ -17,6 +17,7 @@ const GROUP: Record<string, Exclude<Filter, "All">> = {
   wrestlefan: "Growth & GTM",
   "nasscom-ai-curriculum": "Ops & Education",
   "jio-games": "Ops & Education",
+  desportz: "Ops & Education",
 };
 const groupOf = (p: Project): Exclude<Filter, "All"> => GROUP[p.slug] ?? "Growth & GTM";
 

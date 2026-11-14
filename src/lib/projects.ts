@@ -440,6 +440,56 @@ export const projects: Project[] = [
       ],
     },
   },
+  {
+    slug: "desportz",
+    title: "Desportz — Esports Marketing & Business Development",
+    category: "Teaching / Esports Education",
+    year: "Jul–Aug 2026",
+    metric: "Freelance faculty · Esports Marketing and Business Development modules",
+    description:
+      "Freelance faculty member for the Esports Management Program at Desportz, Institute of Esports Training & Academics, teaching the Esports Marketing and Business Development modules.",
+    stack: ["Esports Marketing", "Business Development", "Brand Partnerships", "Curriculum Delivery"],
+    size: "small",
+    client: "Desportz — Institute of Esports Training & Academics",
+    role: "Faculty Member (Freelance), Esports Management Program",
+    featured: true,
+    media: [
+      {
+        event: "Desportz classroom and teaching session photos",
+        place: "Place TBC",
+        date: "2026",
+      },
+    ],
+    caseStudy: {
+      problem:
+        "Esports is a fast-growing industry, but most aspiring managers learn marketing and business development on the job. Desportz needed faculty who had actually sold into the industry, not only studied it.",
+      approach: [
+        {
+          title: "Teach from real campaigns",
+          body: "Built the Esports Marketing module around work I have delivered: brand activations for Infinix, MSI India, Swish and Krafton, and Campus Clash India's go-to-market.",
+        },
+        {
+          title: "Business Development as a repeatable process",
+          body: "Taught how to find, pitch and close brand partners in esports, from sponsor targeting to proposals and activation delivery, drawing on DnC Ventures' ₹1Cr+ of revenue built with no outside funding.",
+        },
+        {
+          title: "Practice over theory",
+          body: "Used live case studies and applied exercises so students leave with frameworks they can use in their first industry role.",
+        },
+      ],
+      decisions: [
+        {
+          title: "Practitioner cases over textbook cases",
+          body: "I chose examples from my own campus-esports and brand-activation work over generic frameworks, because the Indian esports market behaves differently from the case studies in standard marketing books.",
+        },
+      ],
+      outcomes: [
+        { value: "2", label: "Modules taught: Marketing and Business Development" },
+        { value: "Jul–Aug 2026", label: "Freelance engagement" },
+        { value: "Esports Mgmt", label: "Program at Desportz" },
+      ],
+    },
+  },
 ];
 
 /** Brand activations delivered through DnC Ventures (2025–2026). */

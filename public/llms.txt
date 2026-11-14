@@ -24,4 +24,4 @@ The site is an editorial portfolio with deep-dive case studies (event photos liv
 
 Essays on [Medium](https://medium.com/@kshitiz52.525).
 
-- Freelance Faculty Member, Desportz (Institute of Esports Training & Academics), Jul–Aug 2026: Esports Management Program, teaching Esports Marketing and Business Development modules.
+- [Desportz](/work/desportz): Freelance Faculty Member, Desportz (Institute of Esports Training & Academics), Jul–Aug 2026: Esports Management Program, teaching Esports Marketing and Business Development modules.
