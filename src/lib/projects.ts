@@ -42,7 +42,7 @@ export const projects: Project[] = [
     title: "Planiva — Agentic AI for Event Management",
     category: "AI Product / Founder",
     year: "2024–Present",
-    metric: "Plans an ₹8L, 150-guest wedding in minutes vs 16–22 hours manually",
+    metric: "First draft of an ₹8L, 150-guest wedding plan ready in 15 minutes vs 16–22 hours manually",
     description:
       "A multi-agent platform that sources vendors, builds budget and timeline, creates tasks, and automates stakeholder communication across email, WhatsApp and calls. TiE Global University Accelerator finalist.",
     stack: ["Python", "LangGraph", "Postgres + pgvector", "MCP", "Twilio", "Redis", "FastAPI"],
@@ -93,7 +93,7 @@ export const projects: Project[] = [
         },
       ],
       outcomes: [
-        { value: "Minutes", label: "₹8L / 150-guest plan vs 16–22 hrs manual" },
+        { value: "15 mins", label: "First draft ready for an ₹8L / 150-guest plan, vs 16–22 hrs manual" },
         { value: "Finalist", label: "TiE Global University Accelerator" },
         { value: "Top 3%", label: "Of 5,000+ at Tavastra Startup Village" },
       ],
