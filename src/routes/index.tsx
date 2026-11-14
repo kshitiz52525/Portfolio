@@ -162,7 +162,7 @@ function Hero() {
           </p>
           <div className="md:col-span-5 reveal" style={{ animationDelay: "380ms" }}>
             <p className="text-base md:text-lg text-secondary leading-relaxed">
-              I ship LLM-powered products and run on-ground growth. Founder at Planiva. Co-founder at
+              I ship LLM-powered products and run on-ground growth. Built Planiva. Co-founder at
               DnC Ventures. Associate Product Manager at Ctruh. TiE Global Finalist.
             </p>
             <div className="mt-7 flex flex-wrap items-center gap-3">
@@ -440,7 +440,7 @@ function About() {
             </p>
             <p>
               On the product side, I built Zordie AI&apos;s resume intelligence system, and I&apos;m now
-              building agentic AI products at Ctruh. I&apos;m also the founder of Planiva, an agentic
+              building agentic AI products at Ctruh. I&apos;m also building Planiva, an agentic
               platform for event planning that was a TiE Global University Accelerator finalist and was
               rated in the top 3% of 5,000+ at Tavastra Startup Village.
             </p>

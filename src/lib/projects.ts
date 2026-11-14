@@ -40,15 +40,15 @@ export const projects: Project[] = [
   {
     slug: "planiva",
     title: "Planiva — Agentic AI for Event Management",
-    category: "AI Product / Founder",
+    category: "AI Product / Project",
     year: "2024–Present",
     metric: "First draft of an ₹8L, 150-guest wedding plan ready in 15 minutes vs 16–22 hours manually",
     description:
       "A multi-agent platform that sources vendors, builds budget and timeline, creates tasks, and automates stakeholder communication across email, WhatsApp and calls. TiE Global University Accelerator finalist.",
     stack: ["Python", "LangGraph", "Postgres + pgvector", "MCP", "Twilio", "Redis", "FastAPI"],
     size: "large",
-    client: "Self-founded",
-    role: "Founder & Product Lead",
+    client: "Personal project",
+    role: "Product Lead",
     featured: true,
     media: [
       {

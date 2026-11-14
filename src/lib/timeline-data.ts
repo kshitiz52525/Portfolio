@@ -54,7 +54,7 @@ export const timelineChapters: TimelineChapter[] = [
   {
     year: "2024–Present",
     place: "Bengaluru, India",
-    title: "Founded Planiva.",
+    title: "Built Planiva.",
     body: "Building an agentic event-planning platform. TiE Global University Accelerator finalist, and rated in the top 3% of 5,000+ at Tavastra Startup Village.",
     tag: "Build",
     highlight: true,

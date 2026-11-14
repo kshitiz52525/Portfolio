@@ -3,7 +3,7 @@ export const SITE = {
   name: "Kshitiz Trigunayat",
   title: "Kshitiz Trigunayat | AI Product Engineer & Growth Strategist",
   description:
-    "AI product engineer in Bengaluru building LLM-powered products and zero-CAC growth engines. Founder of Planiva, co-founder of DnC Ventures, currently at Ctruh.",
+    "AI product engineer in Bengaluru building LLM-powered products and zero-CAC growth engines. Built Planiva, co-founder of DnC Ventures, currently at Ctruh.",
   location: "Bengaluru, India",
   email: "kshitiz52.525@gmail.com",
   links: {

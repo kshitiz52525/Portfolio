@@ -1,6 +1,6 @@
 # Kshitiz Trigunayat
 
-> Portfolio of Kshitiz Trigunayat — an AI product engineer and growth strategist based in Bengaluru, building LLM-powered products and zero-CAC growth engines. Founder of Planiva, co-founder of DnC Ventures, currently Associate Product Manager at Ctruh.
+> Portfolio of Kshitiz Trigunayat — an AI product engineer and growth strategist based in Bengaluru, building LLM-powered products and zero-CAC growth engines. Built Planiva, co-founder of DnC Ventures, currently Associate Product Manager at Ctruh.
 
 The site is an editorial portfolio with deep-dive case studies (event photos live inside each project), a biographical timeline, and a writing section linking to essays on Medium.
 
