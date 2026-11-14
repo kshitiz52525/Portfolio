@@ -130,7 +130,7 @@ function HeroVideo({ className = "" }: { className?: string }) {
                 <Play size={20} className="relative translate-x-0.5" fill="currentColor" />
               </span>
             </div>
-            <p className="absolute bottom-3 left-4 font-mono-label text-primary">Meet me in 60 sec</p>
+            <p className="absolute bottom-3 left-4 font-mono-label text-primary">Watch my intro</p>
             <p className="absolute bottom-3 right-4 font-mono-label text-secondary">Video coming soon</p>
           </>
         )}
