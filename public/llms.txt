@@ -1,0 +1,27 @@
+# Kshitiz Trigunayat
+
+> Portfolio of Kshitiz Trigunayat — an AI product engineer and growth strategist based in Bengaluru, building LLM-powered products and zero-CAC growth engines. Founder of Planiva, co-founder of DnC Ventures, currently Associate Product Manager at Ctruh.
+
+The site is an editorial portfolio with deep-dive case studies (event photos live inside each project), a biographical timeline, and a writing section linking to essays on Medium.
+
+## Pages
+
+- [Home](/): Hero with stat strip, selected work, about, capabilities, timeline, writing, and contact.
+- [Timeline](/timeline): The full journey from Soron, Uttar Pradesh (2004) to Bengaluru (2026).
+
+## Case studies
+
+- [Planiva](/work/planiva): Agentic AI for event management — LangGraph, Postgres + pgvector, Twilio. Plans an ₹8L, 150-guest wedding in minutes vs 16–22 hours manually. TiE Global finalist.
+- [Ctruh Technologies](/work/ctruh): Associate Product Manager, Jul 2026–present. Marketplace shipped with zero critical bugs; Academy, CMS 2.0, Studio 2.0, IRIS AR try-on mirror.
+- [DnC Ventures](/work/dnc-ventures): Co-founder, Sep 2024–present. ₹1Cr+ revenue, five divisions, 300+ ambassadors across 200+ institutions, 750K+ footfall, clients include Infinix Mobiles, MSI India, Swish, Krafton and many more.
+- [Campus Clash India](/work/campus-clash): Own esports IP under DnC — 13,456 players, 2,988 teams, Grand Finals at IIT Kharagpur with 7,500+ footfall.
+- [WrestleFan Entertainment](/work/wrestlefan): Financials, revenue projections and GTM for Shark Tank India Season 5.
+- [Zordie AI](/work/zordie-ai): Resume intelligence system — 30% faster hiring cycle, 60% better B2C candidate success.
+- [NASSCOM AI in Manufacturing](/work/nasscom-ai-curriculum): Four course modules designed with Naxxatra Sciences for FutureSkills Prime.
+- [Jio Games](/work/jio-games): Good Game Show auditions — 20+ colleges, 40+ person ground team, zero critical failures.
+
+## Writing
+
+Essays on [Medium](https://medium.com/@kshitiz52.525).
+
+- Freelance Faculty Member, Desportz (Institute of Esports Training & Academics), Jul–Aug 2026: Esports Management Program, teaching Esports Marketing and Business Development modules.

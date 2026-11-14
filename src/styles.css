@@ -1,0 +1,249 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-primary: var(--ink);
+  --color-primary-foreground: var(--bg);
+  --color-secondary: var(--muted);
+  --color-secondary-foreground: var(--ink);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-foreground: var(--on-accent);
+  --color-on-accent: var(--on-accent);
+  --color-border: var(--border);
+  --color-rule: var(--rule);
+  --color-background: var(--bg);
+  --color-foreground: var(--ink);
+  --color-card: var(--surface);
+  --color-card-foreground: var(--ink);
+  --color-muted: var(--surface);
+  --color-muted-foreground: var(--muted);
+  --color-input: var(--border);
+  --color-ring: var(--accent);
+  --color-destructive: oklch(0.6 0.22 25);
+  --color-destructive-foreground: var(--bg);
+  --color-popover: var(--surface);
+  --color-popover-foreground: var(--ink);
+  --font-display: "Clash Display", "Space Grotesk", system-ui, sans-serif;
+  --font-serif: "Instrument Serif", Georgia, serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --tracking-tightest: -0.04em;
+  --tracking-snug: -0.01em;
+  --tracking-wide: 0.1em;
+  --tracking-widest: 0.15em;
+  --radius: 0;
+}
+
+/* Light: warm paper, ink, one signal colour (saffron). */
+:root {
+  color-scheme: light;
+  --bg: #f3f0e8;
+  --surface: #fbf9f4;
+  --ink: #141412;
+  --muted: #5f5b53;
+  --accent: #e8480c;
+  --accent-soft: #fbe2d6;
+  --on-accent: #ffffff;
+  --border: #d9d3c6;
+  --rule: #141412;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #0f0f0d;
+    --surface: #181815;
+    --ink: #f1ede4;
+    --muted: #9b968b;
+    --accent: #ff6a2b;
+    --accent-soft: #3a1d10;
+    --on-accent: #0f0f0d;
+    --border: #2b2a25;
+    --rule: #f1ede4;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0f0f0d;
+  --surface: #181815;
+  --ink: #f1ede4;
+  --muted: #9b968b;
+  --accent: #ff6a2b;
+  --accent-soft: #3a1d10;
+  --on-accent: #0f0f0d;
+  --border: #2b2a25;
+  --rule: #f1ede4;
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+    box-sizing: border-box;
+  }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+  }
+  body {
+    background-color: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: -0.01em;
+    overflow-x: hidden;
+  }
+  ::selection {
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+}
+
+@utility container-x {
+  max-width: 1240px;
+  margin-inline: auto;
+  padding-inline: 16px;
+  @media (width >= 48rem) {
+    padding-inline: 32px;
+  }
+}
+
+@utility font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.035em;
+}
+
+@utility font-serif-italic {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+@utility font-mono-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 500;
+}
+
+/* Faint grid paper behind the hero. */
+@utility grid-paper {
+  background-image:
+    linear-gradient(to right, color-mix(in oklab, var(--ink) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, var(--ink) 6%, transparent) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+@utility hatch {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    color-mix(in oklab, var(--ink) 7%, transparent) 0 1px,
+    transparent 1px 10px
+  );
+}
+
+@utility reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: revealUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes revealUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+
+@utility pulse-dot {
+  animation: pulseDot 1.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { animation: none; opacity: 1; transform: none; }
+  .pulse-dot { animation: none; }
+}
+
+/* ---------- Work showcase motion ---------- */
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+.marquee-track { animation: marquee 40s linear infinite; }
+.marquee-mask:hover .marquee-track { animation-play-state: paused; }
+.marquee-mask {
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+
+.spotlight-card { position: relative; transform-style: preserve-3d; will-change: transform; }
+.spotlight-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+  background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 50%), color-mix(in oklab, var(--accent) 16%, transparent), transparent 70%);
+}
+.spotlight-card:hover::before { opacity: 1; }
+
+@keyframes scorecardBar {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+  .spotlight-card { transform: none !important; }
+}
+
+/* ---------- Site-wide scroll reveal ---------- */
+.sr {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1) var(--sr-delay, 0ms),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) var(--sr-delay, 0ms);
+}
+.sr.sr-in { opacity: 1; transform: none; }
+
+/* Light sweep across primary buttons on hover */
+.btn-shine { position: relative; overflow: hidden; }
+.btn-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgb(255 255 255 / 0.35) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 0.7s ease;
+}
+.btn-shine:hover::after { transform: translateX(120%); }
+
+/* Soft page-in for every route */
+@keyframes pageIn { from { opacity: 0; } to { opacity: 1; } }
+main { animation: pageIn 0.5s ease-out; }
+
+@media (prefers-reduced-motion: reduce) {
+  .sr { opacity: 1; transform: none; transition: none; }
+  .btn-shine::after { display: none; }
+  main { animation: none; }
+}
