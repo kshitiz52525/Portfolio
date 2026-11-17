@@ -1,15 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { useEffect, useRef } from "react";
-import { ArrowDownRight, ArrowRight, ArrowUpRight, FileText, Play } from "lucide-react";
-import { dncActivations, projects, type Project } from "@/lib/projects";
-import { timelineChapters } from "@/lib/timeline-data";
+import { useEffect, useState } from "react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { projects } from "@/lib/projects";
+import { homepageChapters, timelineChapters } from "@/lib/timeline-data";
 import { blogPosts } from "@/lib/blog-posts";
-import { testimonials } from "@/lib/testimonials";
 import { mediumPostsQueryOptions, formatPostDate } from "@/lib/medium";
 import { HERO_STATS, SITE } from "@/lib/site";
-import { Footer, MediaPlaceholder, Nav, SectionHeader } from "@/components/site-chrome";
-import { CountUp, WorkShowcase } from "@/components/work-showcase";
+import { Footer, Nav, SectionHeader } from "@/components/site-chrome";
+import { CountUp } from "@/components/motion";
+import { IntroGate } from "@/components/intro-gate";
+import { WorkList } from "@/components/work-list";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -43,19 +44,17 @@ export const Route = createFileRoute("/")({
   component: Portfolio,
 });
 
-/** Fade/slide-up rows, cards and headings as they scroll in (staggered by sibling index). */
+/** Fade/slide-up headings, rows and cards as they scroll into view (staggered by sibling index). */
 function useScrollReveal() {
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     if (typeof IntersectionObserver === "undefined") return;
     const sel = [
       "section:not(#top):not(#work) h2",
-      "section:not(#top):not(#work) article",
-      "section:not(#top):not(#work) li",
-      "section:not(#top):not(#work) blockquote",
-      "section:not(#top):not(#work) .container-x > div > p",
-      "section:not(#top):not(#work) .grid > div",
-      "footer > *",
+      "section:not(#top) li",
+      "section:not(#top):not(#work) dl > div",
+      "section:not(#top):not(#work) .sr-block",
+      "footer > div > *",
     ].join(",");
     const io = new IntersectionObserver(
       (entries) =>
@@ -68,9 +67,14 @@ function useScrollReveal() {
       { threshold: 0.12, rootMargin: "0px 0px -6% 0px" },
     );
     document.querySelectorAll<HTMLElement>(sel).forEach((el) => {
-      if (el.closest("#work") || el.getBoundingClientRect().top < window.innerHeight) return;
+      if (
+        el.closest("#work") ||
+        el.closest("nav") ||
+        el.getBoundingClientRect().top < window.innerHeight
+      )
+        return;
       const idx = Array.from(el.parentElement?.children ?? []).indexOf(el);
-      el.style.setProperty("--sr-delay", `${Math.min(idx, 6) * 70}ms`);
+      el.style.setProperty("--sr-delay", `${Math.min(idx, 6) * 80}ms`);
       el.classList.add("sr");
       io.observe(el);
     });
@@ -81,16 +85,17 @@ function useScrollReveal() {
 function Portfolio() {
   useScrollReveal();
   return (
-    <div className="min-h-screen bg-bg text-primary font-body">
+    <div className="min-h-screen bg-bg font-body text-primary">
+      <IntroGate />
       <Nav />
       <main>
         <Hero />
         <Work />
         <About />
+        <Recognition />
         <Capabilities />
-        <Timeline />
+        <Journey />
         <Writing />
-        <Testimonials />
         <Contact />
       </main>
       <Footer />
@@ -98,166 +103,68 @@ function Portfolio() {
   );
 }
 
-/* ---------------- Intro video (placeholder until the video is ready) ---------------- */
-function HeroVideo({ className = "" }: { className?: string }) {
-  const src: string = SITE.links.introVideo;
-  const isFile = /\.(mp4|webm)$/i.test(src);
-  return (
-    <div className={className}>
-      <div className="group relative aspect-video w-full overflow-hidden border border-border bg-surface transition-colors duration-300 hover:border-accent">
-        {src ? (
-          isFile ? (
-            <video
-              src={src}
-              poster="/intro-poster.jpg"
-              controls
-              playsInline
-              preload="metadata"
-              className="h-full w-full object-cover"
-            />
-          ) : (
-            <iframe
-              src={src}
-              title="Intro video: who is Kshitiz Trigunayat"
-              allow="autoplay; fullscreen; picture-in-picture"
-              allowFullScreen
-              className="h-full w-full"
-            />
-          )
-        ) : (
-          <>
-            <div aria-hidden className="hatch absolute inset-0" />
-            <span aria-hidden className="absolute left-2 top-2 h-3 w-3 border-l-2 border-t-2 border-accent" />
-            <span aria-hidden className="absolute right-2 top-2 h-3 w-3 border-r-2 border-t-2 border-accent" />
-            <span aria-hidden className="absolute bottom-2 left-2 h-3 w-3 border-b-2 border-l-2 border-accent" />
-            <span aria-hidden className="absolute bottom-2 right-2 h-3 w-3 border-b-2 border-r-2 border-accent" />
-            <div className="absolute inset-0 grid place-items-center">
-              <span className="relative grid h-14 w-14 place-items-center rounded-full bg-accent text-on-accent transition-transform duration-300 group-hover:scale-110">
-                <span aria-hidden className="absolute inset-0 animate-ping rounded-full bg-accent/40" />
-                <Play size={20} className="relative translate-x-0.5" fill="currentColor" />
-              </span>
-            </div>
-            <p className="absolute bottom-3 left-4 font-mono-label text-primary">Watch my intro</p>
-            <p className="absolute bottom-3 right-4 font-mono-label text-secondary">Video coming soon</p>
-          </>
-        )}
-      </div>
-    </div>
-  );
-}
-
 /* ---------------- Hero ---------------- */
 function Hero() {
-  const gridRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    let raf = 0;
-    const onScroll = () => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        const y = Math.min(window.scrollY, 900);
-        if (gridRef.current) gridRef.current.style.transform = `translateY(${y * 0.25}px)`;
-        if (titleRef.current) {
-          titleRef.current.style.transform = `translateY(${y * -0.08}px)`;
-          titleRef.current.style.opacity = String(Math.max(0.15, 1 - y / 800));
-        }
-      });
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      cancelAnimationFrame(raf);
-    };
-  }, []);
   return (
-    <section id="top" className="relative overflow-hidden pt-28 md:pt-36 pb-16 md:pb-20">
+    <section id="top" className="grain relative flex min-h-[100svh] flex-col overflow-hidden">
+      <div aria-hidden className="hero-glow pointer-events-none absolute -inset-[20%]" />
       <div
-        ref={gridRef}
         aria-hidden
-        className="grid-paper absolute -inset-20 pointer-events-none will-change-transform"
+        className="pointer-events-none absolute inset-0"
         style={{
-          maskImage: "radial-gradient(ellipse 80% 70% at 70% 20%, black, transparent 75%)",
-          WebkitMaskImage: "radial-gradient(ellipse 80% 70% at 70% 20%, black, transparent 75%)",
+          background: "radial-gradient(ellipse 80% 70% at 50% 50%, transparent 40%, #050504 100%)",
         }}
       />
-      <div className="container-x relative">
-        <div className="flex flex-wrap items-center justify-between gap-3 reveal">
-          <p className="font-mono-label text-secondary">AI Product Engineer, Bengaluru, India</p>
-          <p className="inline-flex items-center gap-2 border border-border bg-surface px-3 py-1.5 font-mono-label text-primary">
-            <span className="pulse-dot h-1.5 w-1.5 rounded-full bg-accent" aria-hidden />
-            Now: APM @ Ctruh
-          </p>
-        </div>
 
-        <HeroVideo className="reveal absolute right-4 top-14 z-20 hidden w-[24vw] max-w-[340px] md:right-8 md:block" />
-
+      <div className="container-x relative flex flex-1 flex-col items-center justify-center pt-28 text-center">
+        <p className="font-mono-label reveal text-secondary" style={{ animationDelay: "0.2s" }}>
+          Product Manager &amp; Entrepreneur
+        </p>
         <h1
-          ref={titleRef}
-          className="font-display font-semibold mt-10 md:mt-14 reveal will-change-transform"
-          style={{ fontSize: "clamp(52px, 12vw, 168px)", lineHeight: 0.88, animationDelay: "120ms" }}
+          className="font-serif-italic reveal mt-8 leading-[0.92]"
+          style={{ fontSize: "clamp(60px, 13vw, 200px)", animationDelay: "0.4s" }}
         >
           Kshitiz
           <br />
-          Trigunayat<span className="text-accent">.</span>
+          Trigunayat
         </h1>
-
-        <HeroVideo className="reveal relative z-20 mt-8 md:hidden" />
-
-        <div className="mt-10 md:mt-14 grid gap-10 md:grid-cols-12 md:items-end">
-          <p
-            className="md:col-span-7 font-display font-medium reveal"
-            style={{ fontSize: "clamp(28px, 4.2vw, 52px)", lineHeight: 1.05, animationDelay: "260ms" }}
+        <p
+          className="reveal mt-10 max-w-xl text-xl leading-snug text-secondary md:text-2xl"
+          style={{ animationDelay: "0.8s" }}
+        >
+          I build AI products and the distribution to scale them.
+        </p>
+        <div className="reveal mt-10 flex items-center gap-8" style={{ animationDelay: "1.1s" }}>
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new Event("replay-intro"))}
+            className="font-mono-label border-b border-primary pb-1 transition-colors hover:border-accent hover:text-accent"
           >
-            I build <span className="font-serif-italic text-accent">AI products</span> and the{" "}
-            <span className="font-serif-italic text-accent">distribution</span> to scale them.
-          </p>
-          <div className="md:col-span-5 reveal" style={{ animationDelay: "380ms" }}>
-            <p className="text-base md:text-lg text-secondary leading-relaxed">
-              I ship LLM-powered products and run on-ground growth. Built Planiva. Co-founder at
-              DnC Ventures. Associate Product Manager at Ctruh. TiE Global Finalist.
-            </p>
-            <div className="mt-7 flex flex-wrap items-center gap-3">
-              <a
-                href="#work"
-                className="btn-shine inline-flex h-12 items-center gap-2 bg-accent px-6 font-mono-label text-on-accent hover:bg-primary hover:text-bg hover:-translate-y-0.5 transition-all duration-300"
-              >
-                View Work <ArrowDownRight size={16} />
-              </a>
-              <a
-                href="#contact"
-                className="inline-flex h-12 items-center gap-2 border border-primary px-6 font-mono-label text-primary hover:bg-primary hover:text-bg hover:-translate-y-0.5 transition-all duration-300"
-              >
-                Get in Touch
-              </a>
-              <a
-                href={SITE.links.resume}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex h-12 items-center gap-2 px-2 font-mono-label text-secondary hover:text-accent transition-colors"
-              >
-                <FileText size={15} /> Resume
-              </a>
-            </div>
-          </div>
+            Watch the intro
+          </button>
+          <a
+            href="#work"
+            className="font-mono-label border-b border-transparent pb-1 text-secondary transition-colors hover:border-accent hover:text-primary"
+          >
+            View work
+          </a>
         </div>
+      </div>
 
-        <div className="mt-16 md:mt-20 reveal" style={{ animationDelay: "500ms" }}>
-          <p className="font-mono-label text-secondary mb-3">Scorecard</p>
-          <dl className="grid grid-cols-2 lg:grid-cols-4 border-t-2 border-rule">
-            {HERO_STATS.map((s, i) => (
-              <div
-                key={s.label}
-                className={`py-5 pr-4 border-b border-border lg:border-b-0 ${
-                  i % 2 === 1 ? "pl-4 border-l" : ""
-                } ${i >= 1 ? "lg:pl-5 lg:border-l" : ""}`}
-              >
-                <dt className="sr-only">{s.label}</dt>
-                <dd className="font-display font-semibold text-4xl md:text-5xl"><CountUp value={s.value} /></dd>
-                <dd className="mt-2 text-sm text-secondary leading-snug">{s.label}</dd>
-              </div>
-            ))}
-          </dl>
+      <div className="container-x reveal relative mt-12 pb-10" style={{ animationDelay: "1.5s" }}>
+        <dl className="grid grid-cols-2 gap-y-6 border-t border-rule/50 pt-6 text-center lg:grid-cols-4">
+          {HERO_STATS.map((s) => (
+            <div key={s.label}>
+              <dt className="sr-only">{s.label}</dt>
+              <dd className="font-display text-3xl md:text-4xl">
+                <CountUp value={s.value} />
+              </dd>
+              <dd className="font-mono-label mt-2 text-[11px] text-secondary">{s.label}</dd>
+            </div>
+          ))}
+        </dl>
+        <div aria-hidden className="mx-auto mt-8 h-10 w-px overflow-hidden bg-border">
+          <div className="scroll-line h-full w-full bg-primary" />
         </div>
       </div>
     </section>
@@ -267,262 +174,137 @@ function Hero() {
 /* ---------------- Work ---------------- */
 function Work() {
   const featured = projects.filter((p) => p.featured);
-  const campusClash = projects.find((p) => p.slug === "campus-clash");
   return (
-    <section id="work" className="py-20 md:py-28">
+    <section id="work" className="py-20 md:py-32">
       <div className="container-x">
         <SectionHeader
           index="01"
           label="Selected Work"
           title={
             <>
-              Things I&apos;ve <span className="font-serif-italic text-accent">shipped.</span>
+              Things I&apos;ve <span className="font-serif-italic">shipped.</span>
             </>
           }
-          aside={<p className="font-mono-label text-secondary">{featured.length} entries</p>}
+          aside={<p className="font-mono-label text-secondary">{featured.length} projects</p>}
         />
-        <WorkShowcase
-          projects={featured}
-          renderShowcase={(p, i) => (
-            <WorkEntry project={p} index={i}>
-              {p.slug === "dnc-ventures" && campusClash && <DncExtras campusClash={campusClash} />}
-            </WorkEntry>
-          )}
-        />
+        <WorkList projects={featured} />
       </div>
     </section>
-  );
-}
-
-function WorkEntry({
-  project,
-  index,
-  children,
-}: {
-  project: Project;
-  index: number;
-  children?: React.ReactNode;
-}) {
-  const outcomes = project.caseStudy.outcomes;
-  return (
-    <article className="group/entry grid gap-6 md:gap-10 border-t border-border py-10 md:py-14 md:grid-cols-12 transition-colors duration-500 hover:bg-surface/60">
-      <div className="md:col-span-2 flex md:flex-col items-baseline md:items-start gap-4">
-        <span className="font-display text-4xl md:text-5xl font-semibold text-accent leading-none transition-transform duration-500 group-hover/entry:translate-x-2">
-          {String(index + 1).padStart(2, "0")}
-        </span>
-        <span className="font-mono-label text-secondary">{project.year}</span>
-      </div>
-
-      <div className="md:col-span-6 min-w-0">
-        <p className="font-mono-label text-secondary">{project.category}</p>
-        <h3 className="mt-3 font-display font-semibold text-3xl md:text-4xl leading-[1.02]">
-          <Link
-            to="/work/$slug"
-            params={{ slug: project.slug }}
-            className="hover:text-accent transition-colors"
-          >
-            {project.title}
-          </Link>
-        </h3>
-        <p className="mt-2 text-sm text-secondary">{project.role}</p>
-
-        <p className="mt-6 border-l-2 border-accent pl-4 font-display text-xl md:text-2xl font-medium leading-snug">
-          {project.metric}
-        </p>
-        <p className="mt-5 text-base text-secondary leading-relaxed">{project.description}</p>
-
-        <ul className="mt-5 flex flex-wrap gap-2" aria-label="Tags">
-          {project.stack.map((s) => (
-            <li
-              key={s}
-              className="font-mono text-[10px] uppercase tracking-widest px-2 py-1 border border-border text-secondary"
-            >
-              {s}
-            </li>
-          ))}
-        </ul>
-
-        {children}
-
-        {project.media && project.media.length > 0 && (
-          <div className="mt-8">
-            <p className="font-mono-label text-secondary mb-3">From the field</p>
-            <div className="grid grid-cols-2 gap-3">
-              {project.media.map((m) => (
-                <MediaPlaceholder key={m.event} item={m} />
-              ))}
-            </div>
-          </div>
-        )}
-
-        <Link
-          to="/work/$slug"
-          params={{ slug: project.slug }}
-          className="mt-8 inline-flex items-center gap-2 font-mono-label text-primary hover:text-accent transition-colors"
-        >
-          Read case study <ArrowRight size={14} />
-        </Link>
-      </div>
-
-      <aside className="md:col-span-4">
-        <div className="border border-border bg-surface transition-all duration-500 group-hover/entry:border-accent group-hover/entry:-translate-y-1">
-          <p className="font-mono-label text-secondary px-5 pt-4">Scorecard</p>
-          <dl className="mt-2">
-            {outcomes.map((o) =>
-              o.value.includes(" · ") ? (
-                <div key={o.label} className="border-t border-border px-5 py-4">
-                  <dt className="text-sm text-secondary leading-snug">{o.label}</dt>
-                  <dd className="mt-3 flex flex-wrap gap-2">
-                    {o.value.split(" · ").map((v) => (
-                      <span
-                        key={v}
-                        className="border border-border px-2.5 py-1 font-display text-sm font-semibold transition-colors hover:border-accent hover:text-accent"
-                      >
-                        {v}
-                      </span>
-                    ))}
-                  </dd>
-                </div>
-              ) : (
-                <div key={o.label} className="flex items-baseline justify-between gap-4 border-t border-border px-5 py-4">
-                  <dt className="text-sm text-secondary leading-snug">{o.label}</dt>
-                  <dd className="font-display text-2xl font-semibold text-right shrink-0">
-                    <CountUp value={o.value} />
-                  </dd>
-                </div>
-              ),
-            )}
-          </dl>
-        </div>
-      </aside>
-    </article>
-  );
-}
-
-function DncExtras({ campusClash }: { campusClash: Project }) {
-  return (
-    <div className="mt-8 space-y-4">
-      <div className="border border-border bg-surface p-5 md:p-6">
-        <div className="flex flex-wrap items-baseline justify-between gap-2">
-          <p className="font-mono-label text-accent">Own IP</p>
-          <p className="font-mono-label text-secondary">{campusClash.year}</p>
-        </div>
-        <h4 className="mt-3 font-display text-2xl font-semibold">
-          <Link
-            to="/work/$slug"
-            params={{ slug: campusClash.slug }}
-            className="hover:text-accent transition-colors"
-          >
-            {campusClash.title}
-          </Link>
-        </h4>
-        <p className="mt-1 text-sm text-secondary">{campusClash.role}</p>
-        <p className="mt-4 font-medium">{campusClash.metric}</p>
-        <p className="mt-2 text-sm text-secondary leading-relaxed">{campusClash.description}</p>
-        {campusClash.media && (
-          <div className="mt-5 grid grid-cols-2 gap-3">
-            {campusClash.media.map((m) => (
-              <MediaPlaceholder key={m.event} item={m} />
-            ))}
-          </div>
-        )}
-      </div>
-
-      <div className="border border-border bg-surface p-5 md:p-6">
-        <div className="flex flex-wrap items-baseline justify-between gap-2">
-          <p className="font-mono-label text-accent">Brand activations</p>
-          <p className="font-mono-label text-secondary">DnC eSports · 2025–2026</p>
-        </div>
-        <p className="mt-3 font-medium">50+ activations, 125+ colleges tapped in 6 months.</p>
-        <ul className="mt-4">
-          {dncActivations.map((a) => (
-            <li key={a.name} className="grid grid-cols-1 sm:grid-cols-[minmax(0,11rem)_1fr] gap-1 sm:gap-4 border-t border-border py-3 text-sm">
-              <span className="font-medium">{a.name}</span>
-              <span className="text-secondary">{a.result}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
   );
 }
 
 /* ---------------- About ---------------- */
 const SPEC: { k: string; v: string }[] = [
   { k: "Based in", v: "Bengaluru, India" },
-  { k: "Currently", v: "Associate Product Manager, Ctruh Technologies" },
+  { k: "Now", v: "Associate Product Manager, Ctruh Technologies" },
   { k: "Building", v: "Planiva · DnC Ventures" },
-  { k: "Education", v: "B.Tech, Digital Transformations (AI/ML), minor in Business, Atria University" },
-  { k: "Recognition", v: "TiE Global University Accelerator finalist" },
+  {
+    k: "Studied",
+    v: "B.Tech, Digital Transformations (AI/ML), minor in Business, Atria University",
+  },
   { k: "Off the clock", v: "Music, cricket, badminton" },
 ];
 
-const CERTS = [
-  { name: "NLP with Classification and Vector Spaces", by: "DeepLearning.AI" },
-  { name: "NLP with Probabilistic Models", by: "DeepLearning.AI" },
-  { name: "Getting Started with AI on Jetson Nano", by: "NVIDIA DLI" },
-  { name: "Introduction to Statistics", by: "Stanford Online" },
-];
-
 function About() {
+  const [more, setMore] = useState(false);
   return (
-    <section id="about" className="py-20 md:py-28">
+    <section id="about" className="py-20 md:py-32">
       <div className="container-x">
         <SectionHeader
           index="02"
-          label="About"
+          label="Biography"
           title={
             <>
-              Engineer by training. <span className="font-serif-italic text-accent">Operator</span> by habit.
+              Engineer by training. <span className="font-serif-italic">Operator</span> by habit.
             </>
           }
         />
-        <div className="grid gap-12 md:grid-cols-12">
-          <div className="md:col-span-7 space-y-6 text-base md:text-lg leading-relaxed text-secondary">
-            <p className="text-xl md:text-2xl leading-snug text-primary">
-              I&apos;m an AI product engineer and growth strategist based in Bengaluru. I work where AI
-              engineering meets commercial strategy: building LLM systems that ship, and distribution
-              that actually converts.
+        <div className="grid gap-14 lg:grid-cols-12">
+          <div className="lg:col-span-7">
+            <p className="font-display text-2xl leading-snug md:text-4xl md:leading-[1.2]">
+              I work where AI engineering meets commercial strategy: building LLM systems that ship,
+              and distribution that actually converts.
             </p>
-            <p>
-              I co-founded DnC Ventures with no outside funding. We ran campus and esports campaigns for
-              brands like Jio Games, Infinix, MSI, STAN, Strike World and Swish, and built a ground
-              network of 300+ campus ambassadors. Our flagship, Campus Clash India, drew 13,456 players
-              with Grand Finals at IIT Kharagpur.
-            </p>
-            <p>
-              On the product side, I built Zordie AI&apos;s resume intelligence system, and I&apos;m now
-              taking Ctruh Academy, the Ctruh CMS, Studio v1 and IRIS end to end. I&apos;m also building Planiva, an agentic
-              platform for event planning that was a TiE Global University Accelerator finalist and was
-              rated in the top 3% of 5,000+ at Tavastra Startup Village.
-            </p>
-            <p className="text-primary font-display text-2xl md:text-3xl font-medium leading-tight pt-2">
-              I like 0-to-1 problems where the answer hasn&apos;t been written yet.
-            </p>
+            <div
+              className="grid transition-all duration-700 ease-out"
+              style={{ gridTemplateRows: more ? "1fr" : "0fr", opacity: more ? 1 : 0 }}
+            >
+              <div className="overflow-hidden">
+                <div className="space-y-5 pt-8 text-lg leading-relaxed text-secondary">
+                  <p>
+                    I co-founded DnC Ventures with no outside funding. We ran campus and esports
+                    campaigns for brands like Jio Games, Infinix, MSI, Krafton, STAN, Strike World
+                    and Swish, and built a ground network of 300+ campus ambassadors. Our flagship,
+                    Campus Clash India, drew 13,456 players with Grand Finals at IIT Kharagpur.
+                  </p>
+                  <p>
+                    On the product side, I&apos;ve taken Ctruh Academy, the Ctruh CMS, Studio v1 and
+                    IRIS end to end, and built Zordie AI&apos;s resume intelligence system. I&apos;m
+                    also building Planiva, an agentic platform for event planning that was a TiE
+                    Global University Accelerator finalist.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <button
+              type="button"
+              onClick={() => setMore((m) => !m)}
+              className="font-mono-label mt-8 border-b border-primary pb-1 transition-colors hover:border-accent hover:text-accent"
+            >
+              {more ? "Close" : "Expand for more info"}
+            </button>
           </div>
 
-          <div className="md:col-span-5 space-y-8">
-            <dl className="border-t-2 border-rule">
-              {SPEC.map((row) => (
-                <div key={row.k} className="grid grid-cols-[7.5rem_1fr] gap-4 border-b border-border py-3.5">
-                  <dt className="font-mono-label text-secondary pt-0.5">{row.k}</dt>
-                  <dd className="text-sm text-primary leading-relaxed">{row.v}</dd>
-                </div>
-              ))}
-            </dl>
-            <div>
-              <p className="font-mono-label text-secondary mb-3">Certifications</p>
-              <ul>
-                {CERTS.map((c) => (
-                  <li key={c.name} className="flex items-baseline justify-between gap-4 border-t border-border py-3 text-sm">
-                    <span>{c.name}</span>
-                    <span className="font-mono text-[10px] uppercase tracking-widest text-secondary text-right">{c.by}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          <dl className="border-t border-rule/50 lg:col-span-5">
+            {SPEC.map((row) => (
+              <div
+                key={row.k}
+                className="grid grid-cols-[7rem_1fr] gap-4 border-b border-border py-4"
+              >
+                <dt className="font-mono-label pt-1 text-secondary">{row.k}</dt>
+                <dd className="text-base">{row.v}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------- Recognition ---------------- */
+const RECOGNITION = [
+  { name: "TiE Global University Accelerator", note: "Finalist" },
+  { name: "Tavastra Startup Village", note: "Top 3% of 5,000+" },
+  { name: "Campus Clash India", note: "Grand Finals at IIT Kharagpur" },
+  { name: "NASSCOM FutureSkills Prime", note: "AI in Manufacturing, 4 modules, live" },
+];
+
+function Recognition() {
+  return (
+    <section id="recognition" className="py-20 md:py-32">
+      <div className="container-x">
+        <SectionHeader
+          index="03"
+          label="Recognition"
+          title={
+            <>
+              Moments that <span className="font-serif-italic">counted.</span>
+            </>
+          }
+        />
+        <ul>
+          {RECOGNITION.map((r) => (
+            <li
+              key={r.name}
+              className="flex flex-col gap-1 border-t border-border py-6 md:flex-row md:items-baseline md:justify-between"
+            >
+              <span className="font-display text-2xl md:text-4xl">{r.name}</span>
+              <span className="font-mono-label text-secondary">{r.note}</span>
+            </li>
+          ))}
+          <li className="border-t border-border" />
+        </ul>
       </div>
     </section>
   );
@@ -530,116 +312,123 @@ function About() {
 
 /* ---------------- Capabilities ---------------- */
 const CAPABILITIES = [
-  {
-    label: "AI / ML",
-    items: ["LLMs", "RAG pipelines", "Agentic systems (LangGraph, CrewAI)", "NLP", "OpenAI API", "Python", "Sentence Transformers"],
-  },
-  { label: "Backend & data", items: ["FastAPI / Flask", "Postgres", "pgvector", "MCP servers", "Docker"] },
+  { label: "AI / ML", items: ["LLMs", "RAG pipelines", "Agentic systems", "NLP", "Python"] },
+  { label: "Backend & data", items: ["FastAPI", "Postgres + pgvector", "MCP servers", "Docker"] },
   { label: "Web", items: ["React", "Next.js", "Tailwind", "Vercel"] },
-  { label: "Product", items: ["0-to-1 building", "PRDs", "Figma", "Roadmapping", "QA", "User research"] },
+  { label: "Product", items: ["0-to-1 building", "PRDs", "Figma", "QA", "User research"] },
   {
     label: "Growth",
-    items: ["Zero-CAC distribution", "Campus outreach", "Brand activation", "Content strategy", "Partnerships", "Pricing"],
+    items: ["Zero-CAC distribution", "Campus outreach", "Brand activation", "Partnerships"],
   },
 ];
-
 const LOOP = ["Problem", "Research", "PRD", "Architecture", "Prototype", "Launch"];
 
 function Capabilities() {
   return (
-    <section id="capabilities" className="py-20 md:py-28">
+    <section id="capabilities" className="py-20 md:py-32">
       <div className="container-x">
         <SectionHeader
-          index="03"
+          index="04"
           label="Capabilities"
           title={
             <>
-              What I <span className="font-serif-italic text-accent">do.</span>
+              What I <span className="font-serif-italic">do.</span>
             </>
           }
         />
-        <div>
+        <ul>
           {CAPABILITIES.map((g) => (
-            <div key={g.label} className="grid grid-cols-1 gap-3 md:grid-cols-12 border-t border-border py-6 md:py-7">
-              <p className="md:col-span-3 font-mono-label text-accent pt-1.5">{g.label}</p>
-              <p className="md:col-span-9 font-display text-xl md:text-2xl font-medium leading-snug">
+            <li
+              key={g.label}
+              className="grid gap-3 border-t border-border py-6 md:grid-cols-12 md:gap-10"
+            >
+              <p className="font-mono-label pt-2 text-accent md:col-span-3">{g.label}</p>
+              <p className="font-display text-2xl leading-snug md:col-span-9 md:text-3xl">
                 {g.items.map((item, i) => (
                   <span key={item}>
                     {item}
-                    {i < g.items.length - 1 && <span className="text-secondary mx-2.5">/</span>}{" "}
+                    {i < g.items.length - 1 && <span className="mx-3 text-rule">·</span>}
                   </span>
                 ))}
               </p>
-            </div>
+            </li>
           ))}
-        </div>
-
-        <div className="mt-14 border border-border bg-surface p-5 md:p-8">
-          <p className="font-mono-label text-secondary">How I work</p>
-          <ol className="mt-5 flex flex-wrap items-center gap-x-2 gap-y-3">
-            {LOOP.map((step, i) => (
-              <li key={step} className="flex items-center gap-2">
-                <span className="inline-flex items-center gap-2 border border-primary px-3 py-1.5 font-mono-label text-primary">
-                  <span className="text-accent">{i + 1}</span>
-                  {step}
+          <li className="grid gap-3 border-y border-border py-6 md:grid-cols-12 md:gap-10">
+            <p className="font-mono-label pt-1 text-accent md:col-span-3">How I work</p>
+            <p className="font-mono-label leading-loose text-secondary md:col-span-9">
+              {LOOP.map((step, i) => (
+                <span key={step}>
+                  <span className="text-primary">{step}</span>
+                  {i < LOOP.length - 1 && <span className="mx-3 text-rule">→</span>}
                 </span>
-                {i < LOOP.length - 1 && <ArrowRight size={14} className="text-secondary" aria-hidden />}
-              </li>
-            ))}
-          </ol>
-          <p className="mt-5 text-sm text-secondary max-w-xl">
-            The same loop runs whether the output is an agent graph or a 13,000-player tournament. Write
-            it down, build the smallest real thing, put it in front of people.
-          </p>
-        </div>
+              ))}
+            </p>
+          </li>
+        </ul>
       </div>
     </section>
   );
 }
 
-/* ---------------- Timeline ---------------- */
-function Timeline() {
-  const chapters = [...timelineChapters].reverse();
+/* ---------------- Journey ---------------- */
+function JourneyItem({ year, place, title, body, tag }: (typeof homepageChapters)[number]) {
+  const [open, setOpen] = useState(false);
   return (
-    <section id="timeline" className="py-20 md:py-28">
+    <li className="border-t border-border py-6 md:py-8">
+      <div className="grid gap-2 md:grid-cols-12 md:gap-8">
+        <p className="font-mono-label pt-2 text-secondary md:col-span-3">{year}</p>
+        <div className="md:col-span-9">
+          <p className="font-display text-2xl leading-tight md:text-4xl">{title}</p>
+          <p className="font-mono-label mt-2 text-[11px] text-secondary">
+            {place} · {tag}
+          </p>
+          <div
+            className="grid transition-all duration-700 ease-out"
+            style={{ gridTemplateRows: open ? "1fr" : "0fr", opacity: open ? 1 : 0 }}
+          >
+            <div className="overflow-hidden">
+              <p className="max-w-2xl pt-4 text-lg leading-relaxed text-secondary">{body}</p>
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={() => setOpen((o) => !o)}
+            aria-expanded={open}
+            className="font-mono-label mt-4 border-b border-transparent pb-0.5 text-secondary transition-colors hover:border-accent hover:text-primary"
+          >
+            {open ? "Close" : "Expand for more info"}
+          </button>
+        </div>
+      </div>
+    </li>
+  );
+}
+
+function Journey() {
+  return (
+    <section id="timeline" className="py-20 md:py-32">
       <div className="container-x">
         <SectionHeader
-          index="04"
-          label="Timeline"
+          index="05"
+          label="Journey"
           title={
             <>
-              Kasganj to <span className="font-serif-italic text-accent">Bengaluru.</span>
+              Kasganj to <span className="font-serif-italic">Bengaluru.</span>
             </>
           }
-          aside={
-            <Link to="/timeline" className="font-mono-label text-secondary hover:text-accent inline-flex items-center gap-1.5">
-              Full story <ArrowUpRight size={13} />
-            </Link>
-          }
         />
-        <ol>
-          {chapters.map((c) => (
-            <li
-              key={c.year + c.title}
-              className="grid gap-2 md:gap-6 border-t border-border py-5 md:grid-cols-12 md:items-baseline"
-            >
-              <p className="md:col-span-2 font-mono-label text-primary flex items-center gap-2">
-                <span
-                  aria-hidden
-                  className={`h-2 w-2 shrink-0 ${c.highlight ? "bg-accent" : "border border-secondary"}`}
-                />
-                {c.year}
-              </p>
-              <div className="md:col-span-7">
-                <p className="font-display text-xl md:text-2xl font-semibold leading-tight">{c.title}</p>
-                <p className="mt-1.5 text-sm text-secondary leading-relaxed">{c.body}</p>
-              </div>
-              <p className="md:col-span-3 font-mono text-[10px] uppercase tracking-widest text-secondary md:text-right">
-                {c.place} · {c.tag}
-              </p>
-            </li>
+        <ul>
+          {homepageChapters.map((c) => (
+            <JourneyItem key={c.year + c.title} {...c} />
           ))}
-        </ol>
+          <li className="border-t border-border" />
+        </ul>
+        <Link
+          to="/timeline"
+          className="font-mono-label mt-8 inline-flex items-center gap-2 border-b border-primary pb-1 transition-colors hover:border-accent hover:text-accent"
+        >
+          The full journey, {timelineChapters.length} chapters <ArrowRight size={14} />
+        </Link>
       </div>
     </section>
   );
@@ -651,18 +440,18 @@ function Writing() {
   const live = data?.posts ?? [];
   const posts =
     live.length > 0
-      ? live.map((p) => ({ title: p.title, link: p.link, date: formatPostDate(p.pubDate), excerpt: p.description }))
+      ? live.map((p) => ({ title: p.title, link: p.link, date: formatPostDate(p.pubDate) }))
       : blogPosts;
 
   return (
-    <section id="writing" className="py-20 md:py-28">
+    <section id="writing" className="py-20 md:py-32">
       <div className="container-x">
         <SectionHeader
-          index="05"
+          index="06"
           label="Writing"
           title={
             <>
-              Notes from the <span className="font-serif-italic text-accent">build.</span>
+              Notes from the <span className="font-serif-italic">build.</span>
             </>
           }
           aside={
@@ -670,64 +459,35 @@ function Writing() {
               href={SITE.links.medium}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-mono-label text-secondary hover:text-accent inline-flex items-center gap-1.5"
+              className="font-mono-label inline-flex items-center gap-1.5 text-secondary transition-colors hover:text-primary"
             >
               Medium <ArrowUpRight size={13} />
             </a>
           }
         />
         <ul>
-          {posts.slice(0, 5).map((post) => (
+          {posts.slice(0, 4).map((post) => (
             <li key={post.link}>
               <a
                 href={post.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group grid gap-2 md:gap-6 border-t border-border py-6 md:grid-cols-12 md:items-baseline"
+                className="group grid gap-2 border-t border-border py-6 md:grid-cols-12 md:items-baseline md:gap-8 md:py-7"
               >
-                <span className="md:col-span-2 font-mono-label text-secondary">{post.date}</span>
-                <span className="md:col-span-9">
-                  <span className="block font-display text-xl md:text-2xl font-semibold leading-tight group-hover:text-accent transition-colors">
-                    {post.title}
-                  </span>
-                  <span className="mt-1.5 block text-sm text-secondary leading-relaxed line-clamp-2">
-                    {post.excerpt}
-                  </span>
+                <span className="font-mono-label text-secondary md:col-span-2">{post.date}</span>
+                <span className="font-display text-2xl leading-tight transition-all duration-500 group-hover:translate-x-2 group-hover:text-accent md:col-span-9 md:text-3xl">
+                  {post.title}
                 </span>
                 <ArrowUpRight
                   size={20}
                   aria-hidden
-                  className="hidden md:block md:col-span-1 justify-self-end text-secondary group-hover:text-accent transition-colors"
+                  className="hidden justify-self-end text-secondary transition-colors group-hover:text-accent md:col-span-1 md:block"
                 />
               </a>
             </li>
           ))}
+          <li className="border-t border-border" />
         </ul>
-      </div>
-    </section>
-  );
-}
-
-/* ---------------- Testimonials (hidden until real quotes exist) ---------------- */
-function Testimonials() {
-  if (testimonials.length === 0) return null;
-  return (
-    <section id="testimonials" className="py-20 md:py-28">
-      <div className="container-x">
-        <SectionHeader index="★" label="Said about the work" title="In their words." />
-        <div className="grid gap-6 md:grid-cols-3">
-          {testimonials.map((t) => (
-            <figure key={t.name} className="border border-border bg-surface p-6">
-              <blockquote className="font-serif-italic text-2xl leading-snug">“{t.quote}”</blockquote>
-              <figcaption className="mt-6 text-sm">
-                <span className="font-medium">{t.name}</span>
-                <span className="block text-secondary">
-                  {t.role}, {t.company}
-                </span>
-              </figcaption>
-            </figure>
-          ))}
-        </div>
       </div>
     </section>
   );
@@ -736,57 +496,49 @@ function Testimonials() {
 /* ---------------- Contact ---------------- */
 function Contact() {
   const links = [
-    { label: "Email", href: `mailto:${SITE.email}` },
     { label: "LinkedIn", href: SITE.links.linkedin },
     { label: "GitHub", href: SITE.links.github },
     { label: "Medium", href: SITE.links.medium },
     { label: "Resume", href: SITE.links.resume },
   ];
   return (
-    <section id="contact" className="py-20 md:py-32">
+    <section id="contact" className="py-24 text-center md:py-40">
       <div className="container-x">
-        <SectionHeader
-          index="06"
-          label="Contact"
-          title={
-            <>
-              Let&apos;s build <span className="font-serif-italic text-accent">something.</span>
-            </>
-          }
-        />
-        <p className="max-w-2xl text-lg md:text-xl text-secondary leading-relaxed">
-          Open to AI product roles, LLM engineering contracts and GTM consulting. Email is fastest, and I
-          usually reply within a day.
+        <p className="font-mono-label text-secondary">Contact</p>
+        <h2
+          className="font-display mt-8"
+          style={{ fontSize: "clamp(40px, 7vw, 104px)", lineHeight: 1, letterSpacing: "-0.02em" }}
+        >
+          Let&apos;s build <span className="font-serif-italic">something.</span>
+        </h2>
+        <p className="mx-auto mt-8 max-w-lg text-xl text-secondary">
+          Open to AI product roles, LLM contracts and GTM consulting.
         </p>
         <a
           href={`mailto:${SITE.email}`}
-          className="group mt-10 inline-flex max-w-full items-center gap-3 font-display font-semibold hover:text-accent transition-colors break-all"
-          style={{ fontSize: "clamp(26px, 5.5vw, 72px)", lineHeight: 1.05 }}
+          className="font-serif-italic group mt-12 inline-flex max-w-full items-center gap-3 break-all border-b border-rule pb-2 transition-colors hover:border-accent hover:text-accent"
+          style={{ fontSize: "clamp(24px, 4.2vw, 56px)", lineHeight: 1.1 }}
         >
           {SITE.email}
           <ArrowUpRight
-            className="shrink-0 text-accent transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
-            size={36}
+            className="shrink-0 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
+            size={28}
             aria-hidden
           />
         </a>
-        <ul className="mt-12 grid grid-cols-2 sm:grid-cols-5 border-t-2 border-rule">
-          {links.map((l) => {
-            const external = l.href.startsWith("http") || l.label === "Resume";
-            return (
-              <li key={l.label} className="border-b border-border sm:border-b-0 sm:border-r last:border-r-0">
-                <a
-                  href={l.href}
-                  target={external ? "_blank" : undefined}
-                  rel={external ? "noopener noreferrer" : undefined}
-                  className="group flex items-center justify-between gap-2 px-1 sm:px-4 py-5 font-mono-label text-primary hover:text-accent transition-colors"
-                >
-                  {l.label}
-                  <ArrowUpRight size={14} className="text-secondary group-hover:text-accent" aria-hidden />
-                </a>
-              </li>
-            );
-          })}
+        <ul className="font-mono-label mt-14 flex flex-wrap justify-center gap-x-10 gap-y-3 text-secondary">
+          {links.map((l) => (
+            <li key={l.label}>
+              <a
+                href={l.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:text-primary"
+              >
+                {l.label}
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
     </section>

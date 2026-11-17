@@ -104,3 +104,6 @@ export const timelineChapters: TimelineChapter[] = [
     highlight: true,
   },
 ];
+
+/** Latest milestones for the homepage. The full list lives on /timeline. */
+export const homepageChapters = [...timelineChapters].reverse().slice(0, 7);
