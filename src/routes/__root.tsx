@@ -98,8 +98,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: SITE.title },
       { name: "description", content: SITE.description },
       { name: "author", content: SITE.name },
-      { name: "theme-color", content: "#f3f0e8", media: "(prefers-color-scheme: light)" },
-      { name: "theme-color", content: "#0f0f0d", media: "(prefers-color-scheme: dark)" },
+      { name: "theme-color", content: "#050504" },
       { property: "og:title", content: SITE.title },
       { property: "og:description", content: SITE.description },
       { property: "og:type", content: "website" },
@@ -113,23 +112,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "preconnect", href: "https://api.fontshare.com" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap",
-      },
-      {
-        rel: "stylesheet",
-        href: "https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Instrument+Serif:ital@0;1&display=swap",
       },
     ],
-    scripts: [
-      {
-        // Apply a saved theme before first paint so there is no flash.
-        children:
-          "(function(){try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t;}catch(e){}})();",
-      },
-    ],
+    scripts: [],
   }),
 
   shellComponent: RootShell,
