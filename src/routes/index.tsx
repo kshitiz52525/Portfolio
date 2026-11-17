@@ -3,8 +3,9 @@ import { useQuery } from "@tanstack/react-query";
 import { useEffect, useRef } from "react";
 import { ArrowDownRight, ArrowRight, ArrowUpRight, FileText, Play } from "lucide-react";
 import { dncActivations, projects, type Project } from "@/lib/projects";
-import { homepageChapters, timelineChapters } from "@/lib/timeline-data";
+import { timelineChapters } from "@/lib/timeline-data";
 import { blogPosts } from "@/lib/blog-posts";
+import { testimonials } from "@/lib/testimonials";
 import { mediumPostsQueryOptions, formatPostDate } from "@/lib/medium";
 import { HERO_STATS, SITE } from "@/lib/site";
 import { Footer, MediaPlaceholder, Nav, SectionHeader } from "@/components/site-chrome";
@@ -17,11 +18,11 @@ export const Route = createFileRoute("/")({
       { name: "description", content: SITE.description },
       { property: "og:title", content: SITE.title },
       { property: "og:description", content: SITE.description },
-      { property: "og:url", content: `${SITE.url}/` },
+      { property: "og:url", content: "/" },
       { name: "twitter:title", content: SITE.title },
       { name: "twitter:description", content: SITE.description },
     ],
-    links: [{ rel: "canonical", href: `${SITE.url}/` }],
+    links: [{ rel: "canonical", href: "/" }],
     scripts: [
       {
         type: "application/ld+json",
@@ -89,6 +90,7 @@ function Portfolio() {
         <Capabilities />
         <Timeline />
         <Writing />
+        <Testimonials />
         <Contact />
       </main>
       <Footer />
@@ -267,7 +269,7 @@ function Work() {
   const featured = projects.filter((p) => p.featured);
   const campusClash = projects.find((p) => p.slug === "campus-clash");
   return (
-    <section id="work" className="py-12 md:py-16">
+    <section id="work" className="py-20 md:py-28">
       <div className="container-x">
         <SectionHeader
           index="01"
@@ -464,7 +466,7 @@ const CERTS = [
 
 function About() {
   return (
-    <section id="about" className="py-12 md:py-16">
+    <section id="about" className="py-20 md:py-28">
       <div className="container-x">
         <SectionHeader
           index="02"
@@ -545,7 +547,7 @@ const LOOP = ["Problem", "Research", "PRD", "Architecture", "Prototype", "Launch
 
 function Capabilities() {
   return (
-    <section id="capabilities" className="py-12 md:py-16">
+    <section id="capabilities" className="py-20 md:py-28">
       <div className="container-x">
         <SectionHeader
           index="03"
@@ -556,40 +558,39 @@ function Capabilities() {
             </>
           }
         />
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div>
           {CAPABILITIES.map((g) => (
-            <div
-              key={g.label}
-              className="border border-border bg-surface p-5 transition-all duration-300 hover:-translate-y-1 hover:border-accent"
-            >
-              <p className="font-mono-label text-accent">{g.label}</p>
-              <ul className="mt-4 flex flex-wrap gap-2">
-                {g.items.map((item) => (
-                  <li key={item} className="border border-border px-2.5 py-1 text-sm">
+            <div key={g.label} className="grid grid-cols-1 gap-3 md:grid-cols-12 border-t border-border py-6 md:py-7">
+              <p className="md:col-span-3 font-mono-label text-accent pt-1.5">{g.label}</p>
+              <p className="md:col-span-9 font-display text-xl md:text-2xl font-medium leading-snug">
+                {g.items.map((item, i) => (
+                  <span key={item}>
                     {item}
-                  </li>
+                    {i < g.items.length - 1 && <span className="text-secondary mx-2.5">/</span>}{" "}
+                  </span>
                 ))}
-              </ul>
+              </p>
             </div>
           ))}
-          <div className="border border-border bg-surface p-5 transition-all duration-300 hover:-translate-y-1 hover:border-accent">
-            <p className="font-mono-label text-accent">How I work</p>
-            <ol className="mt-4 flex flex-wrap items-center gap-x-1.5 gap-y-2">
-              {LOOP.map((step, i) => (
-                <li key={step} className="flex items-center gap-1.5">
-                  <span className="inline-flex items-center gap-1.5 border border-primary px-2.5 py-1 font-mono-label text-primary">
-                    <span className="text-accent">{i + 1}</span>
-                    {step}
-                  </span>
-                  {i < LOOP.length - 1 && <ArrowRight size={12} className="text-secondary" aria-hidden />}
-                </li>
-              ))}
-            </ol>
-            <p className="mt-4 text-sm text-secondary">
-              Same loop for an agent graph or a 13,000-player tournament: write it down, build the
-              smallest real thing, put it in front of people.
-            </p>
-          </div>
+        </div>
+
+        <div className="mt-14 border border-border bg-surface p-5 md:p-8">
+          <p className="font-mono-label text-secondary">How I work</p>
+          <ol className="mt-5 flex flex-wrap items-center gap-x-2 gap-y-3">
+            {LOOP.map((step, i) => (
+              <li key={step} className="flex items-center gap-2">
+                <span className="inline-flex items-center gap-2 border border-primary px-3 py-1.5 font-mono-label text-primary">
+                  <span className="text-accent">{i + 1}</span>
+                  {step}
+                </span>
+                {i < LOOP.length - 1 && <ArrowRight size={14} className="text-secondary" aria-hidden />}
+              </li>
+            ))}
+          </ol>
+          <p className="mt-5 text-sm text-secondary max-w-xl">
+            The same loop runs whether the output is an agent graph or a 13,000-player tournament. Write
+            it down, build the smallest real thing, put it in front of people.
+          </p>
         </div>
       </div>
     </section>
@@ -598,9 +599,9 @@ function Capabilities() {
 
 /* ---------------- Timeline ---------------- */
 function Timeline() {
-  const chapters = homepageChapters;
+  const chapters = [...timelineChapters].reverse();
   return (
-    <section id="timeline" className="py-12 md:py-16">
+    <section id="timeline" className="py-20 md:py-28">
       <div className="container-x">
         <SectionHeader
           index="04"
@@ -616,28 +617,29 @@ function Timeline() {
             </Link>
           }
         />
-        <ol className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <ol>
           {chapters.map((c) => (
             <li
               key={c.year + c.title}
-              className="group border border-border bg-surface p-5 transition-all duration-300 hover:-translate-y-1 hover:border-accent"
+              className="grid gap-2 md:gap-6 border-t border-border py-5 md:grid-cols-12 md:items-baseline"
             >
-              <p className="flex items-center gap-2 font-mono-label text-primary">
-                <span aria-hidden className="h-2 w-2 shrink-0 bg-accent" />
+              <p className="md:col-span-2 font-mono-label text-primary flex items-center gap-2">
+                <span
+                  aria-hidden
+                  className={`h-2 w-2 shrink-0 ${c.highlight ? "bg-accent" : "border border-secondary"}`}
+                />
                 {c.year}
-                <span className="ml-auto text-secondary">{c.tag}</span>
               </p>
-              <p className="mt-3 font-display text-xl font-semibold leading-tight">{c.title}</p>
-              <p className="mt-2 text-sm leading-relaxed text-secondary line-clamp-3">{c.body}</p>
+              <div className="md:col-span-7">
+                <p className="font-display text-xl md:text-2xl font-semibold leading-tight">{c.title}</p>
+                <p className="mt-1.5 text-sm text-secondary leading-relaxed">{c.body}</p>
+              </div>
+              <p className="md:col-span-3 font-mono text-[10px] uppercase tracking-widest text-secondary md:text-right">
+                {c.place} · {c.tag}
+              </p>
             </li>
           ))}
         </ol>
-        <Link
-          to="/timeline"
-          className="mt-6 inline-flex items-center gap-2 font-mono-label text-primary hover:text-accent transition-colors"
-        >
-          See all {timelineChapters.length} milestones <ArrowRight size={14} />
-        </Link>
       </div>
     </section>
   );
@@ -653,7 +655,7 @@ function Writing() {
       : blogPosts;
 
   return (
-    <section id="writing" className="py-12 md:py-16">
+    <section id="writing" className="py-20 md:py-28">
       <div className="container-x">
         <SectionHeader
           index="05"
@@ -674,33 +676,58 @@ function Writing() {
             </a>
           }
         />
-        <ul className="grid gap-4 md:grid-cols-3">
-          {posts.slice(0, 3).map((post) => (
+        <ul>
+          {posts.slice(0, 5).map((post) => (
             <li key={post.link}>
               <a
                 href={post.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex h-full flex-col border border-border bg-surface p-5 transition-all duration-300 hover:-translate-y-1 hover:border-accent"
+                className="group grid gap-2 md:gap-6 border-t border-border py-6 md:grid-cols-12 md:items-baseline"
               >
-                <span className="flex items-center justify-between font-mono-label text-secondary">
-                  {post.date}
-                  <ArrowUpRight
-                    size={18}
-                    aria-hidden
-                    className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent"
-                  />
+                <span className="md:col-span-2 font-mono-label text-secondary">{post.date}</span>
+                <span className="md:col-span-9">
+                  <span className="block font-display text-xl md:text-2xl font-semibold leading-tight group-hover:text-accent transition-colors">
+                    {post.title}
+                  </span>
+                  <span className="mt-1.5 block text-sm text-secondary leading-relaxed line-clamp-2">
+                    {post.excerpt}
+                  </span>
                 </span>
-                <span className="mt-3 block font-display text-xl font-semibold leading-tight transition-colors group-hover:text-accent">
-                  {post.title}
-                </span>
-                <span className="mt-2 block text-sm leading-relaxed text-secondary line-clamp-3">
-                  {post.excerpt}
-                </span>
+                <ArrowUpRight
+                  size={20}
+                  aria-hidden
+                  className="hidden md:block md:col-span-1 justify-self-end text-secondary group-hover:text-accent transition-colors"
+                />
               </a>
             </li>
           ))}
         </ul>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------- Testimonials (hidden until real quotes exist) ---------------- */
+function Testimonials() {
+  if (testimonials.length === 0) return null;
+  return (
+    <section id="testimonials" className="py-20 md:py-28">
+      <div className="container-x">
+        <SectionHeader index="★" label="Said about the work" title="In their words." />
+        <div className="grid gap-6 md:grid-cols-3">
+          {testimonials.map((t) => (
+            <figure key={t.name} className="border border-border bg-surface p-6">
+              <blockquote className="font-serif-italic text-2xl leading-snug">“{t.quote}”</blockquote>
+              <figcaption className="mt-6 text-sm">
+                <span className="font-medium">{t.name}</span>
+                <span className="block text-secondary">
+                  {t.role}, {t.company}
+                </span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -716,7 +743,7 @@ function Contact() {
     { label: "Resume", href: SITE.links.resume },
   ];
   return (
-    <section id="contact" className="py-12 md:py-20">
+    <section id="contact" className="py-20 md:py-32">
       <div className="container-x">
         <SectionHeader
           index="06"

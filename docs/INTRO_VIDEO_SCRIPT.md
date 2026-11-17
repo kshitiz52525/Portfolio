@@ -298,4 +298,11 @@ Use royalty-free electronic or lo-fi-pop (Artlist, Epidemic Sound, YouTube Audio
 | 12 | Desportz logo |
 | 15 | KT/ logo mark, final website URL |
 
+## 6. Facts to double-check before recording
 
+- ₹1Cr+ revenue, zero external funding, 13,456 players and 2,988 teams, 300+ ambassadors across 200+ institutions, 7,500+ footfall at the finals.
+- Planiva: 15 minutes for a first draft vs 16–22 hours manual.
+- NASSCOM: four modules designed, live on FutureSkills Prime. Fourth module is named **Edge-to-Enterprise Integration** (suggested name; confirm or change). Alternatives: "Connecting the Shop Floor" or "Industrial IoT Integration".
+- TiE Global finalist, top 3% of 5,000+.
+- Ctruh: Academy, CMS, Studio v1 (incl. AI Marketing Studio) and IRIS end to end; social media marketing; launch event management.
+- You are cleared to show the Ctruh name (no product screens), the NASSCOM and Naxxatra Sciences names, and the four client logos publicly.

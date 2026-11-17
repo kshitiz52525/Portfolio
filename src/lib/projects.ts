@@ -161,8 +161,8 @@ export const projects: Project[] = [
     featured: true,
     media: [
       {
-        event: "DnC campus event photos",
-        place: "Across India",
+        event: "Bharati Vidyapeeth and ILM University campus events",
+        place: "Place TBC",
         date: "2025",
       },
       {

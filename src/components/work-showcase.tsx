@@ -246,7 +246,7 @@ export function WorkShowcase({
   renderShowcase: (p: Project, i: number) => ReactNode;
 }) {
   const [filter, setFilter] = useState<Filter>("All");
-  const [view, setView] = useState<View>("grid");
+  const [view, setView] = useState<View>("showcase");
   const [query, setQuery] = useState("");
 
   const counts = useMemo(() => {
@@ -267,8 +267,8 @@ export function WorkShowcase({
   const allStack = useMemo(() => Array.from(new Set(projects.flatMap((p) => p.stack))), [projects]);
 
   const views: { id: View; label: string; icon: ReactNode }[] = [
+    { id: "showcase", label: "Showcase", icon: <Rows3 size={14} /> },
     { id: "grid", label: "Grid", icon: <LayoutGrid size={14} /> },
-    { id: "showcase", label: "Detailed", icon: <Rows3 size={14} /> },
     { id: "index", label: "Index", icon: <List size={14} /> },
   ];
 
