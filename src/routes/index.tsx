@@ -125,18 +125,35 @@ function HeroVideo({ className = "" }: { className?: string }) {
         ) : (
           <>
             <div aria-hidden className="hatch absolute inset-0" />
-            <span aria-hidden className="absolute left-2 top-2 h-3 w-3 border-l-2 border-t-2 border-accent" />
-            <span aria-hidden className="absolute right-2 top-2 h-3 w-3 border-r-2 border-t-2 border-accent" />
-            <span aria-hidden className="absolute bottom-2 left-2 h-3 w-3 border-b-2 border-l-2 border-accent" />
-            <span aria-hidden className="absolute bottom-2 right-2 h-3 w-3 border-b-2 border-r-2 border-accent" />
+            <span
+              aria-hidden
+              className="absolute left-2 top-2 h-3 w-3 border-l-2 border-t-2 border-accent"
+            />
+            <span
+              aria-hidden
+              className="absolute right-2 top-2 h-3 w-3 border-r-2 border-t-2 border-accent"
+            />
+            <span
+              aria-hidden
+              className="absolute bottom-2 left-2 h-3 w-3 border-b-2 border-l-2 border-accent"
+            />
+            <span
+              aria-hidden
+              className="absolute bottom-2 right-2 h-3 w-3 border-b-2 border-r-2 border-accent"
+            />
             <div className="absolute inset-0 grid place-items-center">
               <span className="relative grid h-14 w-14 place-items-center rounded-full bg-accent text-on-accent transition-transform duration-300 group-hover:scale-110">
-                <span aria-hidden className="absolute inset-0 animate-ping rounded-full bg-accent/40" />
+                <span
+                  aria-hidden
+                  className="absolute inset-0 animate-ping rounded-full bg-accent/40"
+                />
                 <Play size={20} className="relative translate-x-0.5" fill="currentColor" />
               </span>
             </div>
             <p className="absolute bottom-3 left-4 font-mono-label text-primary">Watch my intro</p>
-            <p className="absolute bottom-3 right-4 font-mono-label text-secondary">Video coming soon</p>
+            <p className="absolute bottom-3 right-4 font-mono-label text-secondary">
+              Video coming soon
+            </p>
           </>
         )}
       </div>
@@ -193,7 +210,11 @@ function Hero() {
         <h1
           ref={titleRef}
           className="font-display font-semibold mt-10 md:mt-14 reveal will-change-transform"
-          style={{ fontSize: "clamp(52px, 12vw, 168px)", lineHeight: 0.88, animationDelay: "120ms" }}
+          style={{
+            fontSize: "clamp(52px, 12vw, 168px)",
+            lineHeight: 0.88,
+            animationDelay: "120ms",
+          }}
         >
           Kshitiz
           <br />
@@ -205,15 +226,18 @@ function Hero() {
         <div className="mt-10 md:mt-14 grid gap-10 md:grid-cols-12 md:items-end">
           <p
             className="md:col-span-7 font-display font-medium reveal"
-            style={{ fontSize: "clamp(28px, 4.2vw, 52px)", lineHeight: 1.05, animationDelay: "260ms" }}
+            style={{
+              fontSize: "clamp(28px, 4.2vw, 52px)",
+              lineHeight: 1.05,
+              animationDelay: "260ms",
+            }}
           >
             I build <span className="font-serif-italic text-accent">AI products</span> and the{" "}
             <span className="font-serif-italic text-accent">distribution</span> to scale them.
           </p>
           <div className="md:col-span-5 reveal" style={{ animationDelay: "380ms" }}>
             <p className="text-base md:text-lg text-secondary leading-relaxed">
-              I ship LLM-powered products and run on-ground growth. Built Planiva. Co-founder at
-              DnC Ventures. Associate Product Manager at Ctruh. TiE Global Finalist.
+              APM at Ctruh. Co-founder, DnC Ventures. TiE Global finalist.
             </p>
             <div className="mt-7 flex flex-wrap items-center gap-3">
               <a
@@ -251,7 +275,9 @@ function Hero() {
                 } ${i >= 1 ? "lg:pl-5 lg:border-l" : ""}`}
               >
                 <dt className="sr-only">{s.label}</dt>
-                <dd className="font-display font-semibold text-4xl md:text-5xl"><CountUp value={s.value} /></dd>
+                <dd className="font-display font-semibold text-4xl md:text-5xl">
+                  <CountUp value={s.value} />
+                </dd>
                 <dd className="mt-2 text-sm text-secondary leading-snug">{s.label}</dd>
               </div>
             ))}
@@ -382,7 +408,10 @@ function WorkEntry({
                   </dd>
                 </div>
               ) : (
-                <div key={o.label} className="flex items-baseline justify-between gap-4 border-t border-border px-5 py-4">
+                <div
+                  key={o.label}
+                  className="flex items-baseline justify-between gap-4 border-t border-border px-5 py-4"
+                >
                   <dt className="text-sm text-secondary leading-snug">{o.label}</dt>
                   <dd className="font-display text-2xl font-semibold text-right shrink-0">
                     <CountUp value={o.value} />
@@ -434,7 +463,10 @@ function DncExtras({ campusClash }: { campusClash: Project }) {
         <p className="mt-3 font-medium">50+ activations, 125+ colleges tapped in 6 months.</p>
         <ul className="mt-4">
           {dncActivations.map((a) => (
-            <li key={a.name} className="grid grid-cols-1 sm:grid-cols-[minmax(0,11rem)_1fr] gap-1 sm:gap-4 border-t border-border py-3 text-sm">
+            <li
+              key={a.name}
+              className="grid grid-cols-1 sm:grid-cols-[minmax(0,11rem)_1fr] gap-1 sm:gap-4 border-t border-border py-3 text-sm"
+            >
               <span className="font-medium">{a.name}</span>
               <span className="text-secondary">{a.result}</span>
             </li>
@@ -448,18 +480,9 @@ function DncExtras({ campusClash }: { campusClash: Project }) {
 /* ---------------- About ---------------- */
 const SPEC: { k: string; v: string }[] = [
   { k: "Based in", v: "Bengaluru, India" },
-  { k: "Currently", v: "Associate Product Manager, Ctruh Technologies" },
-  { k: "Building", v: "Planiva · DnC Ventures" },
-  { k: "Education", v: "B.Tech, Digital Transformations (AI/ML), minor in Business, Atria University" },
-  { k: "Recognition", v: "TiE Global University Accelerator finalist" },
-  { k: "Off the clock", v: "Music, cricket, badminton" },
-];
-
-const CERTS = [
-  { name: "NLP with Classification and Vector Spaces", by: "DeepLearning.AI" },
-  { name: "NLP with Probabilistic Models", by: "DeepLearning.AI" },
-  { name: "Getting Started with AI on Jetson Nano", by: "NVIDIA DLI" },
-  { name: "Introduction to Statistics", by: "Stanford Online" },
+  { k: "Now", v: "Associate Product Manager, Ctruh" },
+  { k: "Studied", v: "B.Tech AI/ML, Atria University" },
+  { k: "Recognition", v: "TiE Global Accelerator finalist" },
 ];
 
 function About() {
@@ -471,55 +494,32 @@ function About() {
           label="About"
           title={
             <>
-              Engineer by training. <span className="font-serif-italic text-accent">Operator</span> by habit.
+              Engineer by training. <span className="font-serif-italic text-accent">Operator</span>{" "}
+              by habit.
             </>
           }
         />
-        <div className="grid gap-12 md:grid-cols-12">
-          <div className="md:col-span-7 space-y-6 text-base md:text-lg leading-relaxed text-secondary">
-            <p className="text-xl md:text-2xl leading-snug text-primary">
-              I&apos;m an AI product engineer and growth strategist based in Bengaluru. I work where AI
-              engineering meets commercial strategy: building LLM systems that ship, and distribution
-              that actually converts.
+        <div className="grid items-start gap-10 md:grid-cols-12">
+          <div className="md:col-span-7">
+            <p className="font-display text-2xl font-medium leading-snug md:text-3xl">
+              I work where AI engineering meets commercial strategy: LLM systems that ship, and
+              distribution that converts.
             </p>
-            <p>
-              I co-founded DnC Ventures with no outside funding. We ran campus and esports campaigns for
-              brands like Jio Games, Infinix, MSI, STAN, Strike World and Swish, and built a ground
-              network of 300+ campus ambassadors. Our flagship, Campus Clash India, drew 13,456 players
-              with Grand Finals at IIT Kharagpur.
-            </p>
-            <p>
-              On the product side, I built Zordie AI&apos;s resume intelligence system, and I&apos;m now
-              taking Ctruh Academy, the Ctruh CMS, Studio v1 and IRIS end to end. I&apos;m also building Planiva, an agentic
-              platform for event planning that was a TiE Global University Accelerator finalist and was
-              rated in the top 3% of 5,000+ at Tavastra Startup Village.
-            </p>
-            <p className="text-primary font-display text-2xl md:text-3xl font-medium leading-tight pt-2">
+            <p className="mt-6 text-lg text-secondary">
               I like 0-to-1 problems where the answer hasn&apos;t been written yet.
             </p>
           </div>
-
-          <div className="md:col-span-5 space-y-8">
-            <dl className="border-t-2 border-rule">
-              {SPEC.map((row) => (
-                <div key={row.k} className="grid grid-cols-[7.5rem_1fr] gap-4 border-b border-border py-3.5">
-                  <dt className="font-mono-label text-secondary pt-0.5">{row.k}</dt>
-                  <dd className="text-sm text-primary leading-relaxed">{row.v}</dd>
-                </div>
-              ))}
-            </dl>
-            <div>
-              <p className="font-mono-label text-secondary mb-3">Certifications</p>
-              <ul>
-                {CERTS.map((c) => (
-                  <li key={c.name} className="flex items-baseline justify-between gap-4 border-t border-border py-3 text-sm">
-                    <span>{c.name}</span>
-                    <span className="font-mono text-[10px] uppercase tracking-widest text-secondary text-right">{c.by}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          <dl className="border-t-2 border-rule md:col-span-5">
+            {SPEC.map((row) => (
+              <div
+                key={row.k}
+                className="grid grid-cols-[6.5rem_1fr] gap-4 border-b border-border py-3.5"
+              >
+                <dt className="font-mono-label text-secondary pt-0.5">{row.k}</dt>
+                <dd className="text-sm text-primary">{row.v}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </div>
     </section>
@@ -528,16 +528,13 @@ function About() {
 
 /* ---------------- Capabilities ---------------- */
 const CAPABILITIES = [
-  {
-    label: "AI / ML",
-    items: ["LLMs", "RAG pipelines", "Agentic systems (LangGraph, CrewAI)", "NLP", "OpenAI API", "Python", "Sentence Transformers"],
-  },
-  { label: "Backend & data", items: ["FastAPI / Flask", "Postgres", "pgvector", "MCP servers", "Docker"] },
+  { label: "AI / ML", items: ["LLMs", "RAG", "Agentic systems", "NLP", "Python"] },
+  { label: "Backend & data", items: ["FastAPI", "Postgres + pgvector", "MCP", "Docker"] },
   { label: "Web", items: ["React", "Next.js", "Tailwind", "Vercel"] },
-  { label: "Product", items: ["0-to-1 building", "PRDs", "Figma", "Roadmapping", "QA", "User research"] },
+  { label: "Product", items: ["0-to-1", "PRDs", "Figma", "QA", "User research"] },
   {
     label: "Growth",
-    items: ["Zero-CAC distribution", "Campus outreach", "Brand activation", "Content strategy", "Partnerships", "Pricing"],
+    items: ["Zero-CAC distribution", "Campus outreach", "Brand activation", "Partnerships"],
   },
 ];
 
@@ -581,14 +578,12 @@ function Capabilities() {
                     <span className="text-accent">{i + 1}</span>
                     {step}
                   </span>
-                  {i < LOOP.length - 1 && <ArrowRight size={12} className="text-secondary" aria-hidden />}
+                  {i < LOOP.length - 1 && (
+                    <ArrowRight size={12} className="text-secondary" aria-hidden />
+                  )}
                 </li>
               ))}
             </ol>
-            <p className="mt-4 text-sm text-secondary">
-              Same loop for an agent graph or a 13,000-player tournament: write it down, build the
-              smallest real thing, put it in front of people.
-            </p>
           </div>
         </div>
       </div>
@@ -611,7 +606,10 @@ function Timeline() {
             </>
           }
           aside={
-            <Link to="/timeline" className="font-mono-label text-secondary hover:text-accent inline-flex items-center gap-1.5">
+            <Link
+              to="/timeline"
+              className="font-mono-label text-secondary hover:text-accent inline-flex items-center gap-1.5"
+            >
               Full story <ArrowUpRight size={13} />
             </Link>
           }
@@ -628,7 +626,6 @@ function Timeline() {
                 <span className="ml-auto text-secondary">{c.tag}</span>
               </p>
               <p className="mt-3 font-display text-xl font-semibold leading-tight">{c.title}</p>
-              <p className="mt-2 text-sm leading-relaxed text-secondary line-clamp-3">{c.body}</p>
             </li>
           ))}
         </ol>
@@ -649,7 +646,12 @@ function Writing() {
   const live = data?.posts ?? [];
   const posts =
     live.length > 0
-      ? live.map((p) => ({ title: p.title, link: p.link, date: formatPostDate(p.pubDate), excerpt: p.description }))
+      ? live.map((p) => ({
+          title: p.title,
+          link: p.link,
+          date: formatPostDate(p.pubDate),
+          excerpt: p.description,
+        }))
       : blogPosts;
 
   return (
@@ -694,9 +696,6 @@ function Writing() {
                 <span className="mt-3 block font-display text-xl font-semibold leading-tight transition-colors group-hover:text-accent">
                   {post.title}
                 </span>
-                <span className="mt-2 block text-sm leading-relaxed text-secondary line-clamp-3">
-                  {post.excerpt}
-                </span>
               </a>
             </li>
           ))}
@@ -728,8 +727,7 @@ function Contact() {
           }
         />
         <p className="max-w-2xl text-lg md:text-xl text-secondary leading-relaxed">
-          Open to AI product roles, LLM engineering contracts and GTM consulting. Email is fastest, and I
-          usually reply within a day.
+          Open to AI product roles, LLM contracts and GTM consulting.
         </p>
         <a
           href={`mailto:${SITE.email}`}
@@ -747,7 +745,10 @@ function Contact() {
           {links.map((l) => {
             const external = l.href.startsWith("http") || l.label === "Resume";
             return (
-              <li key={l.label} className="border-b border-border sm:border-b-0 sm:border-r last:border-r-0">
+              <li
+                key={l.label}
+                className="border-b border-border sm:border-b-0 sm:border-r last:border-r-0"
+              >
                 <a
                   href={l.href}
                   target={external ? "_blank" : undefined}
@@ -755,7 +756,11 @@ function Contact() {
                   className="group flex items-center justify-between gap-2 px-1 sm:px-4 py-5 font-mono-label text-primary hover:text-accent transition-colors"
                 >
                   {l.label}
-                  <ArrowUpRight size={14} className="text-secondary group-hover:text-accent" aria-hidden />
+                  <ArrowUpRight
+                    size={14}
+                    className="text-secondary group-hover:text-accent"
+                    aria-hidden
+                  />
                 </a>
               </li>
             );

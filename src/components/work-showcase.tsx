@@ -23,7 +23,9 @@ const groupOf = (p: Project): Exclude<Filter, "All"> => GROUP[p.slug] ?? "Growth
 
 /* ---------- hooks ---------- */
 function prefersReducedMotion() {
-  return typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  return (
+    typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
 }
 
 function useInView<T extends Element>(once = true, margin = "0px 0px -10% 0px") {
@@ -160,7 +162,10 @@ function StackMarquee({ items }: { items: string[] }) {
     <div className="marquee-mask overflow-hidden border-y border-border py-3 mb-8" aria-hidden>
       <div className="marquee-track flex w-max gap-8">
         {row.map((s, i) => (
-          <span key={i} className="font-mono-label text-secondary flex items-center gap-8 whitespace-nowrap">
+          <span
+            key={i}
+            className="font-mono-label text-secondary flex items-center gap-8 whitespace-nowrap"
+          >
             {s} <span className="text-accent">✦</span>
           </span>
         ))}
@@ -191,12 +196,11 @@ function GridCard({ project, index }: { project: Project; index: number }) {
           {project.category} · {project.year}
         </p>
         <h4 className="mt-2 font-display text-2xl font-semibold leading-[1.05]">{project.title}</h4>
-        <p className="mt-4 border-l-2 border-accent pl-3 text-sm font-medium leading-snug">{project.metric}</p>
-        <p className="mt-3 text-sm leading-relaxed text-secondary line-clamp-3 transition-all group-hover:line-clamp-none">
-          {project.description}
+        <p className="mt-4 border-l-2 border-accent pl-3 text-sm font-medium leading-snug line-clamp-2">
+          {project.metric}
         </p>
         <ul className="mt-auto flex flex-wrap gap-1.5 pt-5">
-          {project.stack.slice(0, 5).map((s) => (
+          {project.stack.slice(0, 3).map((s) => (
             <li
               key={s}
               className="border border-border px-2 py-1 font-mono text-[10px] uppercase tracking-widest text-secondary transition-colors group-hover:border-accent/50"
@@ -219,7 +223,9 @@ function IndexRow({ project, index }: { project: Project; index: number }) {
       className="group relative grid grid-cols-[2.5rem_1fr_auto] items-center gap-4 border-t border-border py-5 md:grid-cols-[3.5rem_1.2fr_1fr_auto] md:py-6 overflow-hidden"
     >
       <span className="absolute inset-0 -z-0 origin-bottom scale-y-0 bg-accent-soft transition-transform duration-500 ease-out group-hover:scale-y-100" />
-      <span className="relative font-mono-label text-secondary">{String(index + 1).padStart(2, "0")}</span>
+      <span className="relative font-mono-label text-secondary">
+        {String(index + 1).padStart(2, "0")}
+      </span>
       <span className="relative font-display text-xl md:text-3xl font-semibold leading-tight transition-transform duration-500 group-hover:translate-x-3">
         {project.title}
       </span>
@@ -260,7 +266,8 @@ export function WorkShowcase({
     return projects.filter(
       (p) =>
         (filter === "All" || groupOf(p) === filter) &&
-        (!q || [p.title, p.category, p.description, ...p.stack].join(" ").toLowerCase().includes(q)),
+        (!q ||
+          [p.title, p.category, p.description, ...p.stack].join(" ").toLowerCase().includes(q)),
     );
   }, [projects, filter, query]);
 
@@ -287,7 +294,9 @@ export function WorkShowcase({
                 aria-selected={on}
                 onClick={() => setFilter(f)}
                 className={`group relative overflow-hidden border px-4 py-2 font-mono-label transition-all duration-300 hover:-translate-y-0.5 ${
-                  on ? "border-accent bg-accent text-on-accent" : "border-border text-secondary hover:border-accent hover:text-primary"
+                  on
+                    ? "border-accent bg-accent text-on-accent"
+                    : "border-border text-secondary hover:border-accent hover:text-primary"
                 }`}
               >
                 {f}
@@ -316,7 +325,9 @@ export function WorkShowcase({
                 aria-pressed={view === v.id}
                 title={v.label}
                 className={`flex items-center gap-1.5 px-3 py-2 font-mono-label transition-colors ${
-                  view === v.id ? "bg-primary text-primary-foreground" : "text-secondary hover:text-primary"
+                  view === v.id
+                    ? "bg-primary text-primary-foreground"
+                    : "text-secondary hover:text-primary"
                 }`}
               >
                 {v.icon}
@@ -343,11 +354,7 @@ export function WorkShowcase({
           {view === "grid" && (
             <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
               {visible.map((p, i) => (
-                <div
-                  key={p.slug}
-                  className="reveal"
-                  style={{ animationDelay: `${i * 70}ms` }}
-                >
+                <div key={p.slug} className="reveal" style={{ animationDelay: `${i * 70}ms` }}>
                   <GridCard project={p} index={i} />
                 </div>
               ))}
