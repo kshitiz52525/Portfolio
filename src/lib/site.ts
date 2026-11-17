@@ -1,5 +1,10 @@
 /** Single source for identity, links and headline numbers used across pages. */
+/** Public site URL. Injected at build time from Vercel (see vite.config.ts); empty in local dev. */
+declare const __SITE_URL__: string;
+const SITE_URL = typeof __SITE_URL__ === "string" ? __SITE_URL__ : "";
+
 export const SITE = {
+  url: SITE_URL,
   name: "Kshitiz Trigunayat",
   title: "Kshitiz Trigunayat | AI Product Engineer & Growth Strategist",
   description:
@@ -8,7 +13,7 @@ export const SITE = {
   email: "kshitiz52.525@gmail.com",
   links: {
     linkedin: "https://www.linkedin.com/in/kshitiz-trigunayat/",
-    github: "https://github.com/kshitiz52525",
+    github: "https://github.com/KTrigunayat",
     medium: "https://medium.com/@kshitiz52.525",
     /** Drop the current PDF at public/resume.pdf. */
     resume: "/resume.pdf",

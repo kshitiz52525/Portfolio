@@ -104,3 +104,6 @@ export const timelineChapters: TimelineChapter[] = [
     highlight: true,
   },
 ];
+
+/** Milestones shown on the homepage. The full list lives on /timeline. */
+export const homepageChapters = timelineChapters.filter((c) => c.highlight).reverse();

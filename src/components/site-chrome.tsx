@@ -187,7 +187,7 @@ export function SectionHeader({
   aside?: ReactNode;
 }) {
   return (
-    <div className="mb-12 md:mb-16">
+    <div className="mb-8 md:mb-10">
       <div className="flex items-center justify-between border-t-2 border-rule pt-3">
         <p className="font-mono-label text-primary">
           <span className="text-accent">{index}</span> / {label}
@@ -195,8 +195,8 @@ export function SectionHeader({
         {aside}
       </div>
       <h2
-        className="font-display font-semibold mt-6 md:mt-8"
-        style={{ fontSize: "clamp(36px, 6vw, 72px)", lineHeight: 0.98 }}
+        className="font-display font-semibold mt-5 md:mt-6"
+        style={{ fontSize: "clamp(32px, 5vw, 56px)", lineHeight: 0.98 }}
       >
         {title}
       </h2>
